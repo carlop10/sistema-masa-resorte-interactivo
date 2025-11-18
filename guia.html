@@ -1,0 +1,3437 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Completa - Sistema Masa-Resorte | Feria Escolar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #64FFDA;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+
+        .section h2 {
+            color: #1A1A2E;
+            font-size: 2em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .section h3 {
+            color: #16213E;
+            font-size: 1.5em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .concept-box {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .formula {
+            background: #1A1A2E;
+            color: #00D4FF;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.2em;
+            text-align: center;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        .example {
+            background: #E3F2FD;
+            border-left: 4px solid #2196F3;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .example h4 {
+            color: #1976D2;
+            margin-bottom: 10px;
+        }
+
+        .warning {
+            background: #FFF3E0;
+            border-left: 4px solid #FF9800;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .important {
+            background: #FFEBEE;
+            border-left: 4px solid #F44336;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .tip {
+            background: #E8F5E9;
+            border-left: 4px solid #4CAF50;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .question {
+            background: #F3E5F5;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border-left: 5px solid #9C27B0;
+        }
+
+        .question h4 {
+            color: #7B1FA2;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .answer {
+            color: #4A148C;
+            padding-left: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        .emoji {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+
+        .code-display {
+            background: #1A1A2E;
+            color: #00D4FF;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1em;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+        }
+
+        .print-btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        @media print {
+            .print-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button class="print-btn" onclick="window.print()">🖨️ Imprimir/Guardar PDF</button>
+
+    <div class="container">
+        <div class="header">
+            <h1>🔬 GUÍA COMPLETA DEL PROFESOR</h1>
+            <h2>Sistema Masa-Resorte Interactivo</h2>
+            <p>Material completo para presentación en Feria Escolar</p>
+        </div>
+
+        <!-- ÍNDICE -->
+        <div class="section">
+            <h2>📋 ÍNDICE DE CONTENIDOS</h2>
+            <ol style="font-size: 1.1em; line-height: 2;">
+                <li><a href="#introduccion">Introducción al Sistema</a></li>
+                <li><a href="#ecuacion">La Ecuación Diferencial Principal</a></li>
+                <li><a href="#parametros">Parámetros del Sistema</a></li>
+                <li><a href="#fuerzas">Tipos de Fuerzas Externas</a></li>
+                <li><a href="#fenomenos">Fenómenos Físicos Importantes</a></li>
+                <li><a href="#experimentos">Experimentos Predefinidos</a></li>
+                <li><a href="#aplicaciones">Aplicaciones en la Vida Real</a></li>
+                <li><a href="#preguntas">Preguntas Frecuentes</a></li>
+                <li><a href="#codigo">El Código del Simulador</a></li>
+            </ol>
+        </div>
+
+        <!-- 1. INTRODUCCIÓN -->
+        <div class="section" id="introduccion">
+            <h2><span class="emoji">🎓</span>1. INTRODUCCIÓN AL SISTEMA MASA-RESORTE</h2>
+
+            <h3>¿Qué es un Sistema Masa-Resorte?</h3>
+            <p>Un sistema masa-resorte es uno de los modelos más fundamentales en física. Consiste en:</p>
+
+            <div class="grid-2">
+                <div class="card">
+                    <h4>🔴 LA MASA</h4>
+                    <p>Un objeto con cierta masa que puede moverse libremente en una dirección. Representa cualquier
+                        cuerpo que tenga inercia (resistencia al cambio de movimiento).</p>
+                </div>
+                <div class="card">
+                    <h4>🔵 EL RESORTE</h4>
+                    <p>Un elemento elástico que conecta la masa a un punto fijo. Cuando se estira o comprime, ejerce una
+                        fuerza para volver a su posición original.</p>
+                </div>
+            </div>
+
+            <div class="concept-box">
+                <h3>🎯 Concepto Clave: Movimiento Armónico</h3>
+                <p>Este sistema produce lo que llamamos <strong>movimiento armónico</strong>: un movimiento que se
+                    repite de forma periódica, como el péndulo de un reloj o las olas del mar.</p>
+                <p><strong>En términos simples:</strong> Si jalas la masa y la sueltas, oscilará de un lado a otro
+                    repetidamente.</p>
+            </div>
+
+            <div class="example">
+                <h4>💡 Ejemplo Cotidiano</h4>
+                <p><strong>Imagina un auto con amortiguadores:</strong></p>
+                <ul>
+                    <li>La <strong>masa</strong> es el auto</li>
+                    <li>Los <strong>resortes</strong> son los amortiguadores</li>
+                    <li>Cuando pasas por un bache, el auto sube y baja = oscilación</li>
+                </ul>
+            </div>
+
+            <h3>¿Por qué es importante estudiar este sistema?</h3>
+            <ul style="font-size: 1.1em; line-height: 2;">
+                <li>✅ Es la base para entender vibraciones en ingeniería</li>
+                <li>✅ Nos ayuda a diseñar edificios resistentes a terremotos</li>
+                <li>✅ Es fundamental para crear amortiguadores en vehículos</li>
+                <li>✅ Se usa en instrumentos musicales</li>
+                <li>✅ Aparece en electrónica y circuitos eléctricos</li>
+            </ul>
+        </div>
+
+        <!-- 2. ECUACIÓN DIFERENCIAL -->
+        <div class="section" id="ecuacion">
+            <h2><span class="emoji">📐</span>2. LA ECUACIÓN DIFERENCIAL PRINCIPAL</h2>
+
+            <div class="formula">
+                m·y'' + c·y' + k·y = F(t)
+            </div>
+
+            <h3>Desglosando la Ecuación</h3>
+
+            <div class="concept-box">
+                <h4><strong>m·y''</strong> - Término de INERCIA</h4>
+                <p><strong>m</strong> = masa (en kilogramos)</p>
+                <p><strong>y''</strong> = aceleración (segunda derivada de posición)</p>
+                <p><strong>Significado físico:</strong> Representa la resistencia del objeto al cambio de movimiento.
+                    Mientras más masa tenga, más difícil es acelerarlo o frenarlo.</p>
+                <div class="example">
+                    <p>Es como empujar un carrito de compras vacío (fácil) vs uno lleno (difícil).</p>
+                </div>
+            </div>
+
+            <div class="concept-box">
+                <h4><strong>c·y'</strong> - Término de AMORTIGUAMIENTO</h4>
+                <p><strong>c</strong> = coeficiente de amortiguamiento</p>
+                <p><strong>y'</strong> = velocidad (primera derivada de posición)</p>
+                <p><strong>Significado físico:</strong> Representa la fricción o resistencia que hace que el movimiento
+                    se detenga gradualmente. Es proporcional a la velocidad.</p>
+                <div class="example">
+                    <p>Es como mover la mano en el aire (poca resistencia) vs en el agua (mucha resistencia).</p>
+                </div>
+            </div>
+
+            <div class="concept-box">
+                <h4><strong>k·y</strong> - Término de RESTAURACIÓN</h4>
+                <p><strong>k</strong> = constante de rigidez del resorte (Newton/metro)</p>
+                <p><strong>y</strong> = desplazamiento desde la posición de equilibrio</p>
+                <p><strong>Significado físico:</strong> La fuerza que ejerce el resorte para volver a su posición
+                    original. Mientras más lo estires, más fuerza hace.</p>
+                <div class="example">
+                    <p>Es como una liga: mientras más la estiras, más fuerza hace para volver a su forma original.</p>
+                </div>
+            </div>
+
+            <div class="concept-box">
+                <h4><strong>F(t)</strong> - FUERZA EXTERNA</h4>
+                <p>Una fuerza que aplicamos desde afuera y que puede variar con el tiempo.</p>
+                <p><strong>Significado físico:</strong> Es como si alguien estuviera empujando la masa de forma
+                    periódica.</p>
+            </div>
+
+            <div class="important">
+                <h4>🔴 Conceptos Importantes para Explicar</h4>
+                <ul>
+                    <li><strong>Ecuación Diferencial:</strong> Una ecuación que relaciona una función con sus derivadas
+                        (velocidad y aceleración en este caso)</li>
+                    <li><strong>Segunda Derivada (y''):</strong> Es la aceleración = qué tan rápido cambia la velocidad
+                    </li>
+                    <li><strong>Primera Derivada (y'):</strong> Es la velocidad = qué tan rápido cambia la posición</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 3. PARÁMETROS -->
+        <div class="section" id="parametros">
+            <h2><span class="emoji">⚙️</span>3. PARÁMETROS DEL SISTEMA</h2>
+
+            <h3>⚖️ MASA (m) - Rango: 0.1 a 5.0 kg</h3>
+
+            <div class="concept-box">
+                <h4>¿Qué es la masa?</h4>
+                <p>La masa es la cantidad de materia en un objeto. NO es lo mismo que el peso (el peso incluye la
+                    gravedad).</p>
+
+                <h4>¿Cómo afecta al sistema?</h4>
+                <table>
+                    <tr>
+                        <th>Masa</th>
+                        <th>Comportamiento</th>
+                        <th>Ejemplo</th>
+                    </tr>
+                    <tr>
+                        <td>Baja (0.1-1 kg)</td>
+                        <td>Oscilaciones rápidas y bruscas</td>
+                        <td>Una pelota de ping-pong en un resorte</td>
+                    </tr>
+                    <tr>
+                        <td>Media (1-3 kg)</td>
+                        <td>Comportamiento balanceado y visible</td>
+                        <td>Una pelota de básquetbol</td>
+                    </tr>
+                    <tr>
+                        <td>Alta (3-5 kg)</td>
+                        <td>Movimiento lento y pesado</td>
+                        <td>Una pesa de gimnasio</td>
+                    </tr>
+                </table>
+
+                <div class="formula">
+                    Frecuencia natural ∝ 1/√m
+                    <br>
+                    (Más masa = oscilaciones más lentas)
+                </div>
+            </div>
+
+            <h3>🧊 RIGIDEZ (k) - Rango: 0.5 a 15.0 N/m</h3>
+
+            <div class="concept-box">
+                <h4>¿Qué es la rigidez?</h4>
+                <p>La rigidez (también llamada constante elástica) mide qué tan "duro" es el resorte. Se mide en Newton
+                    por metro (N/m).</p>
+                <p><strong>En términos simples:</strong> ¿Cuánta fuerza necesitas para estirar el resorte 1 metro?</p>
+
+                <h4>¿Cómo afecta al sistema?</h4>
+                <table>
+                    <tr>
+                        <th>Rigidez</th>
+                        <th>Comportamiento</th>
+                        <th>Ejemplo</th>
+                    </tr>
+                    <tr>
+                        <td>Baja (0.5-3 N/m)</td>
+                        <td>Resorte suave, oscilaciones lentas y amplias</td>
+                        <td>Un resorte de juguete, fácil de estirar</td>
+                    </tr>
+                    <tr>
+                        <td>Media (3-8 N/m)</td>
+                        <td>Comportamiento natural</td>
+                        <td>Resorte de un bolígrafo</td>
+                    </tr>
+                    <tr>
+                        <td>Alta (8-15 N/m)</td>
+                        <td>Resorte rígido, vibraciones rápidas</td>
+                        <td>Resorte de suspensión de auto</td>
+                    </tr>
+                </table>
+
+                <div class="formula">
+                    Frecuencia natural ∝ √k
+                    <br>
+                    (Más rigidez = oscilaciones más rápidas)
+                </div>
+            </div>
+
+            <h3>🛑 AMORTIGUAMIENTO (c) - Rango: 0.0 a 2.0</h3>
+
+            <div class="concept-box">
+                <h4>¿Qué es el amortiguamiento?</h4>
+                <p>El amortiguamiento es la fricción o resistencia que hace que las oscilaciones se detengan
+                    gradualmente. En la vida real, SIEMPRE existe amortiguamiento (aunque sea muy pequeño).</p>
+
+                <h4>Tipos de amortiguamiento:</h4>
+
+                <div class="grid-2">
+                    <div class="card">
+                        <h4>🟢 SUBAMORTIGUADO (c pequeño)</h4>
+                        <p>c &lt; 2√(m·k)</p>
+                        <p>El sistema oscila varias veces antes de detenerse.</p>
+                        <p><strong>Ejemplo:</strong> Una puerta con resorte que se cierra y rebota varias veces.</p>
+                    </div>
+
+                    <div class="card">
+                        <h4>🟡 CRÍTICAMENTE AMORTIGUADO</h4>
+                        <p>c = 2√(m·k)</p>
+                        <p>Vuelve al equilibrio lo más rápido posible SIN oscilar.</p>
+                        <p><strong>Ejemplo:</strong> Amortiguadores de auto bien calibrados.</p>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="card">
+                        <h4>🔴 SOBREAMORTIGUADO (c grande)</h4>
+                        <p>c &gt; 2√(m·k)</p>
+                        <p>Vuelve al equilibrio muy lentamente, sin oscilar.</p>
+                        <p><strong>Ejemplo:</strong> Una puerta con cierra-puertas hidráulico.</p>
+                    </div>
+
+                    <div class="card">
+                        <h4>⚪ SIN AMORTIGUAMIENTO</h4>
+                        <p>c = 0</p>
+                        <p>¡Las oscilaciones continúan para siempre! (solo en teoría)</p>
+                        <p><strong>Nota:</strong> Esto NO existe en la realidad.</p>
+                    </div>
+                </div>
+
+                <div class="warning">
+                    <h4>⚠️ Nota Importante</h4>
+                    <p>En nuestro simulador, el amortiguamiento por defecto es muy bajo (0.1) para poder ver claramente
+                        las oscilaciones. En el experimento "Amortiguado" lo aumentamos a 1.5 para demostrar el efecto.
+                    </p>
+                </div>
+            </div>
+
+            <h3>🎯 FUERZA EXTERNA (F₀) - Rango: 0 a 10 N</h3>
+
+            <div class="concept-box">
+                <h4>¿Qué es la fuerza externa?</h4>
+                <p>Es una fuerza que aplicamos desde afuera del sistema. Puede ser constante o variable en el tiempo.
+                </p>
+
+                <table>
+                    <tr>
+                        <th>Fuerza</th>
+                        <th>Efecto</th>
+                    </tr>
+                    <tr>
+                        <td>0 N</td>
+                        <td>Movimiento libre - solo oscila naturalmente</td>
+                    </tr>
+                    <tr>
+                        <td>0.1-3 N</td>
+                        <td>Vibración suave y controlada</td>
+                    </tr>
+                    <tr>
+                        <td>3-10 N</td>
+                        <td>Oscilaciones intensas (¡puede causar resonancia!)</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3>📡 FRECUENCIA EXTERNA (ω) - Rango: 0.1 a 8.0 rad/s</h3>
+
+            <div class="concept-box">
+                <h4>¿Qué es la frecuencia?</h4>
+                <p>La frecuencia mide qué tan rápido oscila algo. Se mide en radianes por segundo (rad/s).</p>
+                <p><strong>En términos simples:</strong> ¿Cuántas veces por segundo se repite el movimiento?</p>
+
+                <div class="formula">
+                    1 oscilación completa = 2π radianes ≈ 6.28 rad
+                </div>
+
+                <h4>Conversión útil:</h4>
+                <p><strong>Frecuencia en rad/s</strong> ÷ (2π) = <strong>Frecuencia en Hz</strong> (ciclos por segundo)
+                </p>
+
+                <div class="example">
+                    <p>Si ω = 2 rad/s, entonces f = 2/(2π) ≈ 0.32 Hz</p>
+                    <p>Significa que completa una oscilación cada 3 segundos aproximadamente.</p>
+                </div>
+            </div>
+
+            <div class="important">
+                <h4>🔑 FRECUENCIA NATURAL</h4>
+                <div class="formula">
+                    ω_natural = √(k/m)
+                </div>
+                <p>Esta es LA frecuencia más importante del sistema. Es la frecuencia a la que el sistema oscila
+                    naturalmente cuando no hay fuerza externa.</p>
+                <p><strong>Ejemplo:</strong> Si m=1 kg y k=4 N/m:</p>
+                <p>ω_natural = √(4/1) = 2 rad/s</p>
+            </div>
+        </div>
+
+        <!-- 4. TIPOS DE FUERZAS -->
+        <div class="section" id="fuerzas">
+            <h2><span class="emoji">🌊</span>4. TIPOS DE FUERZAS EXTERNAS</h2>
+
+            <h3>🔵 FUERZA COSENO</h3>
+            <div class="concept-box">
+                <div class="formula">
+                    F(t) = F₀ · cos(ω · t)
+                </div>
+
+                <h4>Características:</h4>
+                <ul>
+                    <li>Oscilación suave y continua</li>
+                    <li>Empieza en su valor máximo (F₀)</li>
+                    <li>Patrón armónico perfecto</li>
+                    <li>Se repite cada 2π/ω segundos</li>
+                </ul>
+
+                <div class="example">
+                    <h4>💡 Ejemplos Reales</h4>
+                    <ul>
+                        <li>Motor desbalanceado girando</li>
+                        <li>Vibración de un altavoz</li>
+                        <li>Lavadora en ciclo de centrifugado</li>
+                        <li>Hélice de ventilador</li>
+                    </ul>
+                </div>
+
+                <div class="tip">
+                    <p><strong>Para la feria:</strong> Explica que el coseno y el seno son funciones que oscilan entre
+                        -1 y +1, perfectas para representar movimientos repetitivos.</p>
+                </div>
+            </div>
+
+            <h3>🟢 FUERZA SENO</h3>
+            <div class="concept-box">
+                <div class="formula">
+                    F(t) = F₀ · sin(ω · t)
+                </div>
+
+                <h4>Características:</h4>
+                <ul>
+                    <li>Igual que el coseno pero desplazado 90°</li>
+                    <li>Empieza en cero</li>
+                    <li>En sistemas lineales, produce el mismo resultado que coseno</li>
+                </ul>
+
+                <div class="warning">
+                    <p><strong>Nota:</strong> En nuestro sistema, seno y coseno producen patrones muy similares porque
+                        el sistema es lineal. La única diferencia es la fase inicial (cuándo empiezan).</p>
+                </div>
+            </div>
+
+            <h3>🟡 FUERZA PULSO</h3>
+            <div class="concept-box">
+                <div class="formula">
+                    F(t) = F₀ · [0.5 + 0.5 · sign(sin(ω · t))]
+                </div>
+
+                <h4>Características:</h4>
+                <ul>
+                    <li>Fuerza que se enciende y apaga</li>
+                    <li>Valores: 0 (apagado) o F₀ (encendido)</li>
+                    <li>Patrón tipo "onda cuadrada"</li>
+                    <li>Produce armónicos (frecuencias múltiples)</li>
+                </ul>
+
+                <div class="example">
+                    <h4>💡 Ejemplos Reales</h4>
+                    <ul>
+                        <li>Martillo neumático</li>
+                        <li>Motor de combustión (pistones)</li>
+                        <li>Taladro percutor</li>
+                        <li>Corazón latiendo (aproximado)</li>
+                    </ul>
+                </div>
+
+                <div class="tip">
+                    <p><strong>Observación interesante:</strong> Los pulsos crean patrones más complejos porque
+                        contienen muchas frecuencias al mismo tiempo.</p>
+                </div>
+            </div>
+
+            <h3>🔴 FUERZA ESCALÓN</h3>
+            <div class="concept-box">
+                <div class="formula">
+                    F(t) = 0 si t &lt; 2 segundos
+                    <br>
+                    F(t) = F₀ si t ≥ 2 segundos
+                </div>
+
+                <h4>Características:</h4>
+                <ul>
+                    <li>No hay fuerza al inicio</li>
+                    <li>Después de 2 segundos, fuerza constante</li>
+                    <li>Simula una carga súbita</li>
+                    <li>Útil para estudiar respuesta transitoria</li>
+                </ul>
+
+                <div class="example">
+                    <h4>💡 Ejemplos Reales</h4>
+                    <ul>
+                        <li>Alguien se sube a un auto (carga repentina)</li>
+                        <li>Se añade peso a un ascensor</li>
+                        <li>Se coloca un objeto en una balanza</li>
+                        <li>Un edificio recibe carga de nieve repentina</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="important">
+                <h4>🎯 Comparación de Fuerzas</h4>
+                <table>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Suavidad</th>
+                        <th>Complejidad</th>
+                        <th>Uso Principal</th>
+                    </tr>
+                    <tr>
+                        <td>Coseno/Seno</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>Simple</td>
+                        <td>Motores, vibraciones periódicas</td>
+                    </tr>
+                    <tr>
+                        <td>Pulso</td>
+                        <td>⭐⭐</td>
+                        <td>Media</td>
+                        <td>Impactos repetitivos</td>
+                    </tr>
+                    <tr>
+                        <td>Escalón</td>
+                        <td>⭐</td>
+                        <td>Simple</td>
+                        <td>Cargas repentinas</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- 5. FENÓMENOS FÍSICOS -->
+        <div class="section" id="fenomenos">
+            <h2><span class="emoji">⚡</span>5. FENÓMENOS FÍSICOS IMPORTANTES</h2>
+
+            <h3>🔥 RESONANCIA - El Fenómeno Más Importante</h3>
+
+            <div class="important">
+                <h4>¿Qué es la Resonancia?</h4>
+                <p>La resonancia ocurre cuando la frecuencia de la fuerza externa coincide con la frecuencia natural del
+                    sistema.</p>
+
+                <div class="formula">
+                    RESONANCIA: ω_externa ≈ ω_natural = √(k/m)
+                </div>
+
+                <p><strong>Resultado:</strong> La amplitud de las oscilaciones aumenta DRAMÁTICAMENTE, incluso con
+                    fuerzas pequeñas.</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>¿Por qué ocurre?</h4>
+                <p>Imagina que empujas a alguien en un columpio:</p>
+                <ul>
+                    <li>Si empujas en el momento correcto (cuando va hacia atrás), el columpio va cada vez más alto</li>
+                    <li>Si empujas en el momento incorrecto, frenas el columpio</li>
+                    <li>En resonancia, SIEMPRE empujas en el momento correcto</li>
+                    <li>Cada empujón añade energía = amplitud cada vez mayor</li>
+                </ul>
+
+                <div class="formula">
+                    Energía acumulada = Energía por ciclo × Número de ciclos
+                </div>
+            </div>
+
+            <div class="example">
+                <h4>🌉 El Caso del Puente de Tacoma Narrows (1940)</h4>
+                <p><strong>Historia real:</strong></p>
+                <ul>
+                    <li>📅 Fecha: 7 de noviembre de 1940</li>
+                    <li>📍 Lugar: Estado de Washington, EE.UU.</li>
+                    <li>🌪️ El viento creó vórtices que oscilaban a la frecuencia natural del puente</li>
+                    <li>📈 Las oscilaciones crecieron hasta que el puente colapsó</li>
+                    <li>⏱️ Duró solo 4 meses desde su inauguración</li>
+                    <li>💰 Costo: $6.4 millones (en 1940)</li>
+                </ul>
+
+                <p><strong>Lección:</strong> Los ingenieros ahora SIEMPRE consideran la resonancia al diseñar puentes y
+                    edificios.</p>
+            </div>
+
+            <div class="example">
+                <h4>🎵 Resonancia Positiva: Instrumentos Musicales</h4>
+                <ul>
+                    <li><strong>Guitarra:</strong> La caja de resonancia amplifica las vibraciones de las cuerdas</li>
+                    <li><strong>Violín:</strong> El cuerpo del violín resuena con las cuerdas</li>
+                    <li><strong>Órgano de iglesia:</strong> Los tubos resuenan a frecuencias específicas</li>
+                    <li><strong>Copa de cristal:</strong> Puede romperse si cantas su frecuencia natural</li>
+                </ul>
+            </div>
+
+            <div class="warning">
+                <h4>⚠️ Peligros de la Resonancia</h4>
+                <ul>
+                    <li>🏢 Edificios altos pueden oscilar peligrosamente con el viento</li>
+                    <li>🌉 Puentes colgantes son vulnerables</li>
+                    <li>✈️ Alas de aviones pueden vibrar destructivamente</li>
+                    <li>🏭 Maquinaria industrial puede dañarse</li>
+                    <li>🚁 Rotores de helicópteros deben evitar frecuencias resonantes</li>
+                </ul>
+            </div>
+
+            <h3>📊 BATIMIENTO</h3>
+
+            <div class="concept-box">
+                <h4>¿Qué es el batimiento?</h4>
+                <p>Ocurre cuando la frecuencia externa está CERCA pero no igual a la frecuencia natural.</p>
+
+                <div class="formula">
+                    ω_externa ≈ ω_natural (pero NO iguales)
+                </div>
+
+                <h4>Características:</h4>
+                <ul>
+                    <li>La amplitud crece y decrece periódicamente</li>
+                    <li>Parece que las oscilaciones "laten"</li>
+                    <li>Frecuencia del batimiento = |ω_externa - ω_natural|</li>
+                </ul>
+
+                <div class="example">
+                    <h4>🎸 Ejemplo Musical</h4>
+                    <p>Cuando afinas una guitarra y tocas dos cuerdas casi afinadas, escuchas un "wu-wu-wu" que se hace
+                        más lento conforme te acercas a la afinación perfecta. ¡Eso es batimiento!</p>
+                </div>
+            </div>
+
+            <h3>🛑 AMORTIGUAMIENTO CRÍTICO</h3>
+
+            <div class="concept-box">
+                <h4>El "Punto Dulce" del Amortiguamiento</h4>
+
+                <div class="formula">
+                    c_crítico = 2√(m·k)
+                </div>
+
+                <p>Es el valor de amortiguamiento donde el sistema vuelve al equilibrio lo más rápido posible SIN
+                    oscilar.</p>
+
+                <h4>¿Por qué es importante?</h4>
+                <table>
+                    <tr>
+                        <th>Aplicación</th>
+                        <th>Por qué se necesita</th>
+                    </tr>
+                    <tr>
+                        <td>Amortiguadores de auto</td>
+                        <td>Quieres que el auto se estabilice rápido sin rebotar</td>
+                    </tr>
+                    <tr>
+                        <td>Puertas automáticas</td>
+                        <td>Deben cerrarse suave pero rápido</td>
+                    </tr>
+                    <tr>
+                        <td>Mecanismos de precisión</td>
+                        <td>Necesitan detenerse rápido sin vibrar</td>
+                    </tr>
+                    <tr>
+                        <td>Sistemas de control</td>
+                        <td>Respuesta rápida sin oscilaciones</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3>🔄 MOVIMIENTO TRANSITORIO vs PERMANENTE</h3>
+
+            <div class="concept-box">
+                <h4>Dos Fases del Movimiento</h4>
+
+                <div class="grid-2">
+                    <div class="card">
+                        <h4>🌊 TRANSITORIO (Inicio)</h4>
+                        <p>Los primeros segundos donde el sistema se "acomoda"</p>
+                        <ul>
+                            <li>Depende de las condiciones iniciales</li>
+                            <li>Oscilaciones irregulares</li>
+                            <li>Gradualmente desaparece por el amortiguamiento</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h4>🌟 PERMANENTE (Después)</h4>
+                        <p>El patrón regular que se mantiene</p>
+                        <ul>
+                            <li>Dominado por la fuerza externa</li>
+                            <li>Oscilaciones regulares y predecibles</li>
+                            <li>Este es el comportamiento "real" del sistema</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. EXPERIMENTOS PREDEFINIDOS -->
+        <div class="section" id="experimentos">
+            <h2><span class="emoji">🧪</span>6. EXPERIMENTOS PREDEFINIDOS</h2>
+
+            <h3>🟢 EXPERIMENTO 1: NORMAL</h3>
+
+            <div class="concept-box">
+                <h4>Configuración:</h4>
+                <ul>
+                    <li>Masa (m) = 1.0 kg</li>
+                    <li>Rigidez (k) = 4.0 N/m</li>
+                    <li>Fuerza (F₀) = 2.0 N</li>
+                    <li>Frecuencia (ω) = 2.0 rad/s</li>
+                    <li>Amortiguamiento (c) = 0.1</li>
+                </ul>
+
+                <h4>Cálculos:</h4>
+                <div class="formula">
+                    Frecuencia natural = √(4/1) = 2.0 rad/s
+                    <br>
+                    Razón ω_externa/ω_natural = 2.0/2.0 = 1.0
+                </div>
+
+                <div class="important">
+                    <h4>¡ESTÁ EN RESONANCIA!</h4>
+                    <p>Este experimento muestra resonancia porque la frecuencia externa coincide exactamente con la
+                        natural.</p>
+                </div>
+
+                <h4>¿Qué observar?</h4>
+                <ul>
+                    <li>✅ Oscilaciones regulares y amplias</li>
+                    <li>✅ La amplitud es mayor que la fuerza aplicada</li>
+                    <li>✅ Patrón sinusoidal limpio en la gráfica</li>
+                    <li>✅ El resorte se estira mucho</li>
+                </ul>
+
+                <div class="tip">
+                    <p><strong>Para explicar:</strong> "Este es un comportamiento 'normal' del sistema en resonancia.
+                        Noten cómo una fuerza pequeña (2N) produce oscilaciones grandes."</p>
+                </div>
+            </div>
+
+            <h3>🔥 EXPERIMENTO 2: RESONANCIA</h3>
+
+            <div class="concept-box">
+                <h4>Configuración:</h4>
+                <ul>
+                    <li>Masa (m) = 1.0 kg</li>
+                    <li>Rigidez (k) = 4.0 N/m</li>
+                    <li>Fuerza (F₀) = 3.0 N ⬆️ (aumentada)</li>
+                    <li>Frecuencia (ω) = 2.0 rad/s</li>
+                    <li>Amortiguamiento (c) = 0.05 ⬇️ (reducido)</li>
+                </ul>
+
+                <h4>Diferencias con "Normal":</h4>
+                <ul>
+                    <li>📈 Fuerza 50% mayor (2.0 → 3.0 N)</li>
+                    <li>📉 Amortiguamiento 50% menor (0.1 → 0.05)</li>
+                    <li>⚡ Resultado: Oscilaciones MUY dramáticas</li>
+                </ul>
+
+                <div class="important">
+                    <h4>🎯 Objetivo del Experimento</h4>
+                    <p>Demostrar el poder de la resonancia con mínimo amortiguamiento. ¡Este es el experimento más
+                        espectacular!</p>
+                </div>
+
+                <h4>¿Qué observar?</h4>
+                <ul>
+                    <li>🔴 El indicador "⚡ ¡RESONANCIA!" aparece</li>
+                    <li>🔴 La masa se mueve con amplitud muy grande</li>
+                    <li>🔴 El resorte se estira al máximo</li>
+                    <li>🔴 Colores cambian (masa amarilla, resorte rojo)</li>
+                    <li>🔴 La gráfica muestra ondas de gran amplitud</li>
+                </ul>
+
+                <div class="example">
+                    <h4>💬 Explicación para el público</h4>
+                    <p>"Imaginen que están empujando a alguien en un columpio. Si empujan en el momento exacto cada vez,
+                        el columpio va cada vez más alto, incluso si solo empujan suavemente. ¡Eso es resonancia! Una
+                        pequeña fuerza aplicada correctamente produce un efecto enorme."</p>
+                </div>
+            </div>
+
+            <h3>🛑 EXPERIMENTO 3: AMORTIGUADO</h3>
+
+            <div class="concept-box">
+                <h4>Configuración:</h4>
+                <ul>
+                    <li>Masa (m) = 2.0 kg ⬆️ (doblada)</li>
+                    <li>Rigidez (k) = 4.0 N/m</li>
+                    <li>Fuerza (F₀) = 1.0 N ⬇️ (reducida)</li>
+                    <li>Frecuencia (ω) = 1.0 rad/s</li>
+                    <li>Amortiguamiento (c) = 1.5 ⬆️⬆️ (muy aumentado)</li>
+                </ul>
+
+                <h4>Cálculos importantes:</h4>
+                <div class="formula">
+                    Frecuencia natural = √(4/2) ≈ 1.41 rad/s
+                    <br>
+                    Amortiguamiento crítico = 2√(2×4) ≈ 5.66
+                    <br>
+                    Razón = 1.5/5.66 ≈ 0.27 (subamortiguado)
+                </div>
+
+                <h4>¿Qué observar?</h4>
+                <ul>
+                    <li>🔵 Las oscilaciones disminuyen rápidamente</li>
+                    <li>🔵 Movimiento más lento (mayor masa)</li>
+                    <li>🔵 La amplitud nunca crece mucho</li>
+                    <li>🔵 Después de unos segundos, casi no hay movimiento</li>
+                    <li>🔵 Patrón tipo "envolvente" en la gráfica</li>
+                </ul>
+
+                <div class="example">
+                    <h4>💬 Explicación para el público</h4>
+                    <p>"Este es como un auto con buenos amortiguadores. Cuando pasas por un bache, el auto rebota un
+                        poco pero se estabiliza rápido. El amortiguamiento convierte la energía del movimiento en calor,
+                        por eso las oscilaciones desaparecen."</p>
+                </div>
+
+                <div class="tip">
+                    <h4>🎯 Comparación Interesante</h4>
+                    <p>Pide al público comparar este experimento con "Resonancia":</p>
+                    <ul>
+                        <li>Resonancia: Amplitud crece sin control</li>
+                        <li>Amortiguado: Amplitud se controla y reduce</li>
+                        <li>Muestra por qué los amortiguadores son importantes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>🌀 EXPERIMENTO 4: LIBRE</h3>
+
+            <div class="concept-box">
+                <h4>Configuración:</h4>
+                <ul>
+                    <li>Masa (m) = 1.0 kg</li>
+                    <li>Rigidez (k) = 4.0 N/m</li>
+                    <li>Fuerza (F₀) = 0.0 N ⬇️⬇️ (sin fuerza!)</li>
+                    <li>Frecuencia (ω) = 2.0 rad/s (irrelevante sin fuerza)</li>
+                    <li>Amortiguamiento (c) = 0.0 (sin fricción)</li>
+                </ul>
+
+                <div class="important">
+                    <h4>🎯 Objetivo del Experimento</h4>
+                    <p>Mostrar el comportamiento "puro" del sistema sin influencias externas. Este es el sistema
+                        masa-resorte en su forma más simple.</p>
+                </div>
+
+                <h4>¿Qué observar?</h4>
+                <ul>
+                    <li>🟢 Oscilaciones perfectamente regulares</li>
+                    <li>🟢 Frecuencia = frecuencia natural (2.0 rad/s)</li>
+                    <li>🟢 Amplitud constante (en teoría)</li>
+                    <li>🟢 Patrón sinusoidal perfecto</li>
+                    <li>🟢 Las oscilaciones NO crecen ni decrecen</li>
+                </ul>
+
+                <div class="formula">
+                    Ecuación simplificada: m·y'' + k·y = 0
+                    <br>
+                    Solución: y(t) = A·cos(ω_n·t + φ)
+                </div>
+
+                <div class="warning">
+                    <h4>⚠️ Nota Importante</h4>
+                    <p>En el simulador, las oscilaciones eventualmente se detienen debido al amortiguamiento numérico
+                        (errores de redondeo en la computadora). En la realidad, SIEMPRE hay algún amortiguamiento, así
+                        que las oscilaciones siempre se detienen eventualmente.</p>
+                </div>
+
+                <div class="example">
+                    <h4>💬 Explicación para el público</h4>
+                    <p>"Este es como un péndulo en el vacío sin fricción. Una vez que lo pones en movimiento, oscila
+                        para siempre a su ritmo natural. En la vida real esto no existe, pero nos ayuda a entender el
+                        comportamiento básico del sistema."</p>
+                </div>
+            </div>
+
+            <h3>📊 Tabla Comparativa de Experimentos</h3>
+
+            <table>
+                <tr>
+                    <th>Experimento</th>
+                    <th>Objetivo</th>
+                    <th>Fenómeno Principal</th>
+                    <th>Amplitud</th>
+                </tr>
+                <tr>
+                    <td>Normal</td>
+                    <td>Caso de referencia</td>
+                    <td>Resonancia moderada</td>
+                    <td>Grande</td>
+                </tr>
+                <tr>
+                    <td>Resonancia</td>
+                    <td>Máximo efecto</td>
+                    <td>Resonancia fuerte</td>
+                    <td>Muy grande</td>
+                </tr>
+                <tr>
+                    <td>Amortiguado</td>
+                    <td>Control de oscilaciones</td>
+                    <td>Disipación de energía</td>
+                    <td>Pequeña y decreciente</td>
+                </tr>
+                <tr>
+                    <td>Libre</td>
+                    <td>Sistema básico</td>
+                    <td>Oscilación natural pura</td>
+                    <td>Constante</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- 7. APLICACIONES -->
+        <div class="section" id="aplicaciones">
+            <h2><span class="emoji">🌍</span>7. APLICACIONES EN LA VIDA REAL</h2>
+
+            <h3>🏗️ INGENIERÍA CIVIL</h3>
+
+            <div class="concept-box">
+                <h4>1. Edificios y Terremotos</h4>
+
+                <div class="example">
+                    <h4>🏢 Taipei 101 (Taiwán)</h4>
+                    <ul>
+                        <li>Altura: 508 metros (101 pisos)</li>
+                        <li>Problema: Vientos fuertes y terremotos</li>
+                        <li>Solución: <strong>Amortiguador de masa</strong> de 660 toneladas</li>
+                        <li>Funcionamiento: Una esfera gigante cuelga del piso 92</li>
+                        <li>Efecto: Reduce oscilaciones hasta 40%</li>
+                        <li>Es visible para turistas!</li>
+                    </ul>
+                </div>
+
+                <div class="example">
+                    <h4>🗼 Torre CN (Canadá)</h4>
+                    <ul>
+                        <li>Altura: 553 metros</li>
+                        <li>Oscilación máxima: Puede moverse hasta 1.8 metros en la punta</li>
+                        <li>Sistema: 102 amortiguadores de masa sintonizada</li>
+                        <li>Diseño específico para resistir vientos de 418 km/h</li>
+                    </ul>
+                </div>
+
+                <h4>🌉 Puentes</h4>
+                <ul>
+                    <li><strong>Puente Golden Gate:</strong> Amortiguadores desde 1989 para soportar terremotos</li>
+                    <li><strong>Millennium Bridge (Londres):</strong> Tuvo que cerrarse 2 días después de inaugurado por
+                        resonancia con los peatones. Se instalaron 91 amortiguadores.</li>
+                    <li><strong>Diseño moderno:</strong> Todos los puentes grandes ahora incluyen análisis de resonancia
+                    </li>
+                </ul>
+            </div>
+
+            <h3>🚗 INGENIERÍA AUTOMOTRIZ</h3>
+
+            <div class="concept-box">
+                <h4>Amortiguadores de Auto</h4>
+
+                <p><strong>Problema:</strong> Sin amortiguadores, el auto rebotaría sin control después de cada bache.
+                </p>
+
+                <div class="grid-2">
+                    <div class="card">
+                        <h4>Componentes:</h4>
+                        <ul>
+                            <li>Resortes (k) - Soportan el peso</li>
+                            <li>Amortiguadores (c) - Controlan oscilaciones</li>
+                            <li>Masa (m) - El auto y pasajeros</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h4>Diseño Típico:</h4>
+                        <ul>
+                            <li>Amortiguamiento crítico o ligeramente subamortiguado</li>
+                            <li>Se estabiliza en 1-2 oscilaciones</li>
+                            <li>Balance entre confort y control</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="example">
+                    <h4>🏎️ Autos de Carrera vs Autos Normales</h4>
+                    <ul>
+                        <li><strong>Auto normal:</strong> Amortiguamiento más suave (confort)</li>
+                        <li><strong>Auto de carrera:</strong> Amortiguamiento más rígido (control)</li>
+                        <li><strong>SUV:</strong> Amortiguamiento variable según terreno</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>🎵 MÚSICA Y ACÚSTICA</h3>
+
+            <div class="concept-box">
+                <h4>Instrumentos Musicales</h4>
+
+                <div class="example">
+                    <h4>🎸 Guitarra</h4>
+                    <ul>
+                        <li><strong>Cuerdas:</strong> Cada una tiene su frecuencia natural</li>
+                        <li><strong>Caja:</strong> Amplifica por resonancia</li>
+                        <li><strong>Afinación:</strong> Cambiar la tensión (k) cambia la frecuencia</li>
+                        <li><strong>Trastes:</strong> Cambian la longitud efectiva (cambia m)</li>
+                    </ul>
+                </div>
+
+                <div class="example">
+                    <h4>🎹 Piano</h4>
+                    <ul>
+                        <li>88 teclas = 88 frecuencias diferentes</li>
+                        <li>Cuerdas tensadas (alto k)</li>
+                        <li>Caja de resonancia amplifica el sonido</li>
+                        <li>Pedal de sustain = reduce amortiguamiento</li>
+                    </ul>
+                </div>
+
+                <div class="example">
+                    <h4>🔔 Campanas y Copas de Cristal</h4>
+                    <ul>
+                        <li>Tienen frecuencias naturales muy definidas</li>
+                        <li>Pueden romperse si se excitan a su frecuencia de resonancia</li>
+                        <li>Cantantes de ópera pueden romper copas (en teoría)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>⚙️ MAQUINARIA INDUSTRIAL</h3>
+
+            <div class="concept-box">
+                <h4>Prevención de Vibraciones Destructivas</h4>
+
+                <ul>
+                    <li><strong>Lavadoras:</strong> Detectan desbalance y ajustan velocidad para evitar resonancia</li>
+                    <li><strong>Turbinas:</strong> Operan lejos de frecuencias resonantes críticas</li>
+                    <li><strong>Motores eléctricos:</strong> Montados en soportes anti-vibración</li>
+                    <li><strong>Compresores:</strong> Balanceados dinámicamente</li>
+                </ul>
+
+                <div class="warning">
+                    <h4>⚠️ Caso Real: Falla por Resonancia</h4>
+                    <p>Una turbina de avión puede girar a 10,000-15,000 RPM. Si alguna frecuencia de operación coincide
+                        con una frecuencia natural de los álabes, pueden fallar catastróficamente. Por eso se prueban
+                        exhaustivamente.</p>
+                </div>
+            </div>
+
+            <h3>🏥 MEDICINA</h3>
+
+            <div class="concept-box">
+                <h4>Resonancia Magnética (MRI)</h4>
+                <p>Aunque es un tipo diferente de resonancia (nuclear), el principio es similar:</p>
+                <ul>
+                    <li>Los átomos de hidrógeno tienen una frecuencia natural</li>
+                    <li>Se les aplica una frecuencia de radio específica</li>
+                    <li>Entran en resonancia y emiten señales</li>
+                    <li>Esas señales se usan para crear imágenes</li>
+                </ul>
+
+                <h4>Litotripsia (Romper Cálculos Renales)</h4>
+                <ul>
+                    <li>Usa ondas de choque para romper piedras</li>
+                    <li>La frecuencia se ajusta para maximizar el efecto</li>
+                    <li>Aprovecha la resonancia mecánica</li>
+                </ul>
+            </div>
+
+            <h3>🎮 VIDEOJUEGOS Y ANIMACIÓN</h3>
+
+            <div class="concept-box">
+                <h4>Física de Resortes en Juegos</h4>
+
+                <ul>
+                    <li><strong>Pelo y ropa de personajes:</strong> Simulados con sistemas masa-resorte</li>
+                    <li><strong>Vehículos:</strong> Suspensiones realistas</li>
+                    <li><strong>Efectos especiales:</strong> Gelatinas, agua, deformaciones</li>
+                    <li><strong>Cámaras:</strong> "Spring arm" para seguimiento suave</li>
+                </ul>
+
+                <div class="example">
+                    <h4>🎮 Ejemplos de Juegos</h4>
+                    <ul>
+                        <li><strong>Fortnite:</strong> Física del cabello y accesorios</li>
+                        <li><strong>Gran Turismo:</strong> Suspensión realista de autos</li>
+                        <li><strong>Minecraft:</strong> Bloques de slime (resortes)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. PREGUNTAS FRECUENTES -->
+        <div class="section" id="preguntas">
+            <h2><span class="emoji">❓</span>8. PREGUNTAS FRECUENTES DEL PÚBLICO</h2>
+
+            <h3>🔵 Preguntas Básicas</h3>
+
+            <div class="question">
+                <h4>❓ ¿Por qué la masa oscila más en resonancia?</h4>
+                <div class="answer">
+                    <p><strong>Respuesta simple:</strong> Porque la fuerza externa empuja siempre en el momento
+                        perfecto, sumando energía en cada ciclo.</p>
+
+                    <p><strong>Analogía:</strong> Es como empujar a alguien en un columpio. Si empujas cuando va hacia
+                        atrás, el columpio sube cada vez más alto. Si empujas en el momento equivocado, lo frenas. En
+                        resonancia, SIEMPRE empujas en el momento correcto.</p>
+
+                    <p><strong>Explicación técnica:</strong> La fuerza está "en fase" con el movimiento, maximizando la
+                        transferencia de energía. Cada ciclo añade energía, y con poco amortiguamiento, la amplitud
+                        crece sin límite (teóricamente).</p>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>❓ ¿El amortiguamiento es bueno o malo?</h4>
+                <div class="answer">
+                    <p><strong>Respuesta:</strong> ¡Depende del contexto!</p>
+
+                    <table>
+                        <tr>
+                            <th>Situación</th>
+                            <th>Amortiguamiento</th>
+                            <th>Razón</th>
+                        </tr>
+                        <tr>
+                            <td>Amortiguadores de auto</td>
+                            <td>✅ BUENO</td>
+                            <td>Necesitas estabilidad y confort</td>
+                        </tr>
+                        <tr>
+                            <td>Instrumentos musicales</td>
+                            <td>❌ MALO</td>
+                            <td>Quieres que el sonido dure</td>
+                        </tr>
+                        <tr>
+                            <td>Edificios en terremoto</td>
+                            <td>✅ BUENO</td>
+                            <td>Disipa energía sísmica</td>
+                        </tr>
+                        <tr>
+                            <td>Péndulos de reloj</td>
+                            <td>❌ MALO</td>
+                            <td>Necesitas precisión constante</td>
+                        </tr>
+                        <tr>
+                            <td>Maquinaria industrial</td>
+                            <td>✅ BUENO</td>
+                            <td>Previene vibraciones destructivas</td>
+                        </tr>
+                    </table>
+
+                    <p><strong>Conclusión:</strong> El amortiguamiento es una herramienta de ingeniería. Lo usamos
+                        cuando queremos controlar o eliminar oscilaciones.</p>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>❓ ¿Por qué cambia la frecuencia natural?</h4>
+                <div class="answer">
+                    <div class="formula">
+                        ω_natural = √(k/m)
+                    </div>
+
+                    <p><strong>Respuesta:</strong> La frecuencia natural depende de DOS cosas:</p>
+
+                    <ul>
+                        <li><strong>Rigidez (k):</strong> Resortes más rígidos → frecuencia MÁS ALTA</li>
+                        <li><strong>Masa (m):</strong> Más masa → frecuencia MÁS BAJA</li>
+                    </ul>
+
+                    <div class="example">
+                        <h4>🎸 Ejemplo: Guitarra</h4>
+                        <ul>
+                            <li><strong>Apretar la clavija</strong> → aumenta tensión (k) → nota más aguda</li>
+                            <li><strong>Cuerda más gruesa</strong> → más masa (m) → nota más grave</li>
+                        </ul>
+                    </div>
+
+                    <p><strong>Tabla de ejemplos:</strong></p>
+                    <table>
+                        <tr>
+                            <th>Cambio</th>
+                            <th>Efecto en ω</th>
+                            <th>Ejemplo</th>
+                        </tr>
+                        <tr>
+                            <td>Duplicar k</td>
+                            <td>ω × 1.41</td>
+                            <td>Resorte más duro</td>
+                        </tr>
+                        <tr>
+                            <td>Duplicar m</td>
+                            <td>ω ÷ 1.41</td>
+                            <td>Objeto más pesado</td>
+                        </tr>
+                        <tr>
+                            <td>Cuadruplicar k</td>
+                            <td>ω × 2</td>
+                            <td>Resorte muy rígido</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>❓ ¿Esto se usa en videojuegos?</h4>
+                <div class="answer">
+                    <p><strong>¡SÍ! Mucho más de lo que piensas:</strong></p>
+
+                    <ul>
+                        <li><strong>Física del cabello:</strong> Cada mechón es un sistema de resortes conectados</li>
+                        <li><strong>Ropa y capas:</strong> Simuladas con mallas de resortes</li>
+                        <li><strong>Vehículos:</strong> Suspensión realista usando estos principios</li>
+                        <li><strong>Cámaras:</strong> Seguimiento suave con "resortes virtuales"</li>
+                        <li><strong>Interfaces:</strong> Animaciones elásticas (botones, menús)</li>
+                        <li><strong>Efectos:</strong> Gelatinas, agua, deformaciones</li>
+                    </ul>
+
+                    <div class="example">
+                        <h4>🎮 Técnica: "Spring Arm"</h4>
+                        <p>En juegos de tercera persona (como Fortnite), la cámara está conectada al personaje por un
+                            "resorte virtual". Esto permite:</p>
+                        <ul>
+                            <li>Movimiento suave al correr</li>
+                            <li>Recuperación gradual después de impactos</li>
+                            <li>Sensación natural y orgánica</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>❓ ¿Qué pasa si no hay amortiguamiento?</h4>
+                <div class="answer">
+                    <p><strong>En teoría:</strong> Las oscilaciones continuarían para siempre con la misma amplitud.</p>
+
+                    <p><strong>En la realidad:</strong> Esto NUNCA ocurre. Siempre hay alguna forma de amortiguamiento:
+                    </p>
+                    <ul>
+                        <li>🌬️ Resistencia del aire</li>
+                        <li>🔥 Fricción interna del material</li>
+                        <li>🔊 Emisión de sonido (energía que se va)</li>
+                        <li>⚡ Pérdidas eléctricas (en sistemas eléctricos)</li>
+                    </ul>
+
+                    <div class="example">
+                        <h4>🌌 Lo más cercano: Péndulo en el vacío</h4>
+                        <p>Un péndulo oscilando en el vacío del espacio es lo más cercano a "sin amortiguamiento". Aún
+                            así, eventualmente se detendría por:</p>
+                        <ul>
+                            <li>Fricción en el punto de pivote</li>
+                            <li>Flexión del cable</li>
+                            <li>Radiación de ondas gravitacionales (¡en cantidades infinitesimales!)</li>
+                        </ul>
+                    </div>
+
+                    <p><strong>En nuestro simulador:</strong> Establecemos c=0.0 para ver el caso ideal, pero aún hay
+                        amortiguamiento numérico (errores de cálculo de la computadora).</p>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>❓ ¿Cómo se relaciona con un péndulo?</h4>
+                <div class="answer">
+                    <p><strong>¡Son primos hermanos!</strong> Ambos son osciladores armónicos.</p>
+
+                    <div class="grid-2">
+                        <div class="card">
+                            <h4>Masa-Resorte</h4>
+                            <ul>
+                                <li>Fuerza restauradora: -k·x</li>
+                                <li>Frecuencia: √(k/m)</li>
+                                <li>Oscila horizontalmente</li>
+                                <li>Fuerza proporcional a desplazamiento</li>
+                            </ul>
+                        </div>
+
+                        <div class="card">
+                            <h4>Péndulo (ángulos pequeños)</h4>
+                            <ul>
+                                <li>Fuerza restauradora: -m·g·sin(θ) ≈ -m·g·θ</li>
+                                <li>Frecuencia: √(g/L)</li>
+                                <li>Oscila en arco</li>
+                                <li>Fuerza proporcional a ángulo</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <p><strong>Diferencia clave:</strong> El péndulo depende de la gravedad, el resorte no.</p>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>❓ ¿Por qué usamos radianes por segundo en lugar de Hertz?</h4>
+                <div class="answer">
+                    <p><strong>Razones matemáticas:</strong></p>
+
+                    <ul>
+                        <li>Los radianes son la unidad "natural" en matemáticas</li>
+                        <li>Simplifican las ecuaciones diferenciales</li>
+                        <li>No necesitas factores de 2π en las fórmulas</li>
+                    </ul>
+
+                    <p><strong>Conversión:</strong></p>
+                    <div class="formula">
+                        f (Hertz) = ω (rad/s) / (2π)
+                        <br>
+                        ω (rad/s) = 2π × f (Hertz)
+                    </div>
+
+                    <div class="example">
+                        <p><strong>Ejemplo:</strong></p>
+                        <ul>
+                            <li>ω = 6.28 rad/s = 1 Hz (1 ciclo por segundo)</li>
+                            <li>ω = 2 rad/s ≈ 0.32 Hz (1 ciclo cada 3 segundos)</li>
+                        </ul>
+                    </div>
+
+                    <p><strong>En el simulador usamos rad/s</strong> porque es lo que aparece naturalmente en las
+                        ecuaciones.</p>
+                </div>
+            </div>
+
+            <h3>🟡 Preguntas Intermedias</h3>
+
+            <div class="question">
+                <h4>❓ ¿Por qué el puente de Tacoma colapsó?</h4>
+                <div class="answer">
+                    <p><strong>Historia completa:</strong></p>
+
+                    <ul>
+                        <li>📅 <strong>Fecha:</strong> 7 de noviembre de 1940</li>
+                        <li>📍 <strong>Lugar:</strong> Tacoma, Washington, EE.UU.</li>
+                        <li>⏱️ <strong>Duración:</strong> Solo 4 meses después de inauguración</li>
+                        <li>🌪️ <strong>Causa:</strong> Vientos de 68 km/h (no excepcionalmente fuertes)</li>
+                        <li>💰 <strong>Costo original:</strong> $6.4 millones (1940)</li>
+                    </ul>
+
+                    <p><strong>¿Qué pasó exactamente?</strong></p>
+                    <ol>
+                        <li>El viento creó <strong>vórtices de Von Kármán</strong> (remolinos alternados detrás del
+                            puente)</li>
+                        <li>Estos vórtices empujaban el puente con una frecuencia específica</li>
+                        <li>Esa frecuencia coincidió con la frecuencia natural de <strong>torsión</strong> del puente
+                        </li>
+                        <li>El puente entró en <strong>resonancia torsional</strong> (giraba sobre su eje longitudinal)
+                        </li>
+                        <li>Las oscilaciones crecieron hasta alcanzar amplitudes de varios metros</li>
+                        <li>Los cables y la estructura se rompieron por fatiga</li>
+                    </ol>
+
+                    <div class="important">
+                        <h4>🎓 Lecciones aprendidas:</h4>
+                        <ul>
+                            <li>Los ingenieros ahora analizan TODAS las frecuencias naturales (flexión, torsión,
+                                laterales)</li>
+                            <li>Se hacen pruebas exhaustivas en túneles de viento con modelos a escala</li>
+                            <li>Se añaden elementos de amortiguamiento específicos</li>
+                            <li>Se usan análisis por computadora (CFD - Computational Fluid Dynamics)</li>
+                            <li>Se diseña activamente para evitar resonancia con vientos comunes</li>
+                        </ul>
+                    </div>
+
+                    <p><strong>Dato curioso:</strong> Existe video famoso del colapso porque un estudiante de ingeniería
+                        estaba filmando. El puente se apodaba "Galloping Gertie" (Gertie la Galopante) porque siempre
+                        oscilaba.</p>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>❓ ¿Cómo funciona un sismógrafo?</h4>
+                <div class="answer">
+                    <p><strong>Principio básico:</strong> ¡Es literalmente un sistema masa-resorte!</p>
+
+                    <div class="grid-2">
+                        <div class="card">
+                            <h4>Componentes:</h4>
+                            <ul>
+                                <li>Una masa grande suspendida por resortes</li>
+                                <li>La base conectada firmemente al suelo</li>
+                                <li>Un sensor/lápiz adherido a la masa</li>
+                                <li>Papel móvil o sensor electrónico en la base</li>
+                            </ul>
+                        </div>
+
+                        <div class="card">
+                            <h4>Funcionamiento:</h4>
+                            <ul>
+                                <li>Durante un terremoto, el suelo se mueve</li>
+                                <li>La masa intenta quedarse quieta (inercia)</li>
+                                <li>El movimiento relativo se registra</li>
+                                <li>Produce un sismograma</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <p><strong>Diseño inteligente:</strong> La frecuencia natural del sismógrafo se diseña DIFERENTE a
+                        las frecuencias típicas de terremotos (0.5-20 Hz) para evitar resonancia que distorsionaría las
+                        mediciones.</p>
+
+                    <p><strong>Tipos de sismógrafos:</strong></p>
+                    <ul>
+                        <li><strong>Horizontal:</strong> Detecta movimiento este-oeste o norte-sur</li>
+                        <li><strong>Vertical:</strong> Detecta movimiento arriba-abajo</li>
+                        <li><strong>Modernos:</strong> Usan acelerómetros electrónicos pero el principio es el mismo
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>❓ ¿Pueden las personas causar resonancia en puentes?</h4>
+                <div class="answer">
+                    <p><strong>¡SÍ! Caso real: Millennium Bridge, Londres (2000)</strong></p>
+
+                    <ul>
+                        <li>🗓️ Inauguración: 10 de junio de 2000</li>
+                        <li>🚶 Miles de personas lo cruzaron el primer día</li>
+                        <li>🌊 El puente empezó a oscilar lateralmente hasta 70mm</li>
+                        <li>❌ Se cerró después de solo 2 días</li>
+                        <li>💰 Costo de reparación: £5 millones (~$7 millones USD)</li>
+                        <li>⏱️ Cerrado durante: 22 meses</li>
+                        <li>✅ Reabierto: 22 de febrero de 2002</li>
+                    </ul>
+
+                    <p><strong>¿Qué causó el problema?</strong></p>
+                    <ol>
+                        <li>Las personas caminan naturalmente a ~2 Hz (2 pasos por segundo)</li>
+                        <li>Esta frecuencia coincidía con una frecuencia natural lateral del puente</li>
+                        <li><strong>Fenómeno de sincronización involuntaria:</strong> cuando el puente se mueve, las
+                            personas ajustan inconscientemente su paso para mantener el balance</li>
+                        <li>Esto crea un ciclo de retroalimentación positiva (más personas = más fuerza)</li>
+                        <li>Se necesitaban solo 156 personas caminando para iniciar el problema</li>
+                    </ol>
+
+                    <p><strong>Solución implementada:</strong></p>
+                    <ul>
+                        <li>Instalaron 91 amortiguadores (37 laterales, 52 verticales, 2 torsionales)</li>
+                        <li>Costo total del proyecto: £18.2 millones (original) + £5 millones (reparación)</li>
+                        <li>El puente ahora es completamente seguro</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>❓ ¿Por qué los soldados no pueden marchar al unísono sobre puentes?</h4>
+                <div class="answer">
+                    <p><strong>Razón:</strong> La marcha militar sincronizada puede inducir resonancia peligrosa en
+                        puentes.</p>
+
+                    <ul>
+                        <li>Marcha militar típica: ~120 pasos/minuto = 2 Hz</li>
+                        <li>Esta frecuencia puede coincidir con frecuencias naturales de puentes</li>
+                        <li>Múltiples soldados sincronizados = fuerza periódica muy grande</li>
+                        <li>Riesgo real de oscilaciones peligrosas o colapso</li>
+                    </ul>
+
+                    <div class="example">
+                        <h4>📜 Casos históricos documentados:</h4>
+                        <ul>
+                            <li><strong>Puente de Angers, Francia (1850):</strong>
+                                <ul>
+                                    <li>487 soldados cruzando en formación</li>
+                                    <li>El puente colgante colapsó</li>
+                                    <li>226 soldados murieron</li>
+                                    <li>Cambió las regulaciones militares mundialmente</li>
+                                </ul>
+                            </li>
+                            <li><strong>Broughton Suspension Bridge, Inglaterra (1831):</strong>
+                                <ul>
+                                    <li>74 soldados marchando en formación</li>
+                                    <li>Puente colgante colapsó</li>
+                                    <li>20 soldados lesionados</li>
+                                    <li>Primer caso documentado de este fenómeno</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <p><strong>Regla militar actual:</strong> Los soldados deben "romper el paso" (caminar sin
+                        sincronizar) al cruzar puentes. Esta es una orden estándar en todos los ejércitos modernos.</p>
+
+                    <p><strong>Excepciones:</strong> Puentes modernos de acero y concreto son generalmente seguros, pero
+                        la práctica se mantiene por precaución.</p>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>❓ ¿Qué son los amortiguadores de masa sintonizada?</h4>
+                <div class="answer">
+                    <p><strong>Definición:</strong> Un sistema masa-resorte instalado en edificios altos para reducir
+                        oscilaciones.</p>
+
+                    <p><strong>Principio de funcionamiento:</strong></p>
+                    <ol>
+                        <li>Se instala una masa enorme (100-1000 toneladas) en la parte superior del edificio</li>
+                        <li>La masa está conectada por resortes y amortiguadores</li>
+                        <li>Se "sintoniza" para que su frecuencia natural sea igual a la del edificio</li>
+                        <li>Cuando el edificio oscila, la masa oscila en dirección opuesta</li>
+                        <li>Esto cancela parte del movimiento (anti-resonancia)</li>
+                    </ol>
+
+                    <div class="example">
+                        <h4>🏢 Ejemplos Famosos:</h4>
+
+                        <p><strong>Taipei 101 (Taiwán):</strong></p>
+                        <ul>
+                            <li>Masa: 660 toneladas (esfera de acero)</li>
+                            <li>Diámetro: 5.5 metros</li>
+                            <li>Ubicación: Pisos 87-92</li>
+                            <li>Reduce oscilaciones: 30-40%</li>
+                            <li>¡Es visible para turistas!</li>
+                            <li>Costo: ~$4 millones USD</li>
+                        </ul>
+
+                        <p><strong>Burj Khalifa (Dubai):</strong></p>
+                        <ul>
+                            <li>No usa un solo TMD masivo</li>
+                            <li>Usa diseño aerodinámico en forma de Y</li>
+                            <li>Múltiples sistemas de amortiguamiento distribuidos</li>
+                            <li>Puede oscilar hasta 1.5 metros en la punta</li>
+                        </ul>
+
+                        <p><strong>Torre CN (Toronto):</strong></p>
+                        <ul>
+                            <li>102 amortiguadores de masa sintonizada</li>
+                            <li>Diseñado para vientos de 418 km/h</li>
+                            <li>Reduce oscilaciones hasta 50%</li>
+                        </ul>
+                    </div>
+
+                    <p><strong>Ventaja clave:</strong> No necesitan energía eléctrica - funcionan pasivamente por física
+                        pura.</p>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>❓ ¿Cómo afecta la gravedad al sistema?</h4>
+                <div class="answer">
+                    <p><strong>Respuesta interesante:</strong> ¡La gravedad NO afecta la frecuencia de oscilación!</p>
+
+                    <p><strong>Explicación:</strong></p>
+                    <ol>
+                        <li>La gravedad estira el resorte inicialmente (posición de equilibrio)</li>
+                        <li>Esta elongación inicial es: Δx = m·g/k</li>
+                        <li>Pero las OSCILACIONES ocurren alrededor de esta nueva posición</li>
+                        <li>La frecuencia sigue siendo: ω = √(k/m)</li>
+                        <li>¡No depende de g!</li>
+                    </ol>
+
+                    <div class="example">
+                        <h4>🚀 Experimento mental:</h4>
+                        <p>Si llevaras este sistema masa-resorte a la Luna (g = 1.6 m/s² vs 9.8 m/s² en la Tierra):</p>
+                        <ul>
+                            <li>❌ La posición de equilibrio sería diferente (resorte menos estirado)</li>
+                            <li>✅ La frecuencia de oscilación sería LA MISMA</li>
+                            <li>✅ ¡Incluso funcionaría igual en el espacio (g=0)!</li>
+                        </ul>
+                    </div>
+
+                    <p><strong>Contraste con péndulo:</strong> Un péndulo SÍ depende de g. En la Luna oscila más lento
+                        (ω = √(g/L)).</p>
+                </div>
+            </div>
+
+            <h3>🔴 Preguntas Avanzadas</h3>
+
+            <div class="question">
+                <h4>❓ ¿Qué es un grado de libertad?</h4>
+                <div class="answer">
+                    <p><strong>Definición:</strong> Número de coordenadas independientes necesarias para describir
+                        completamente el estado del sistema.</p>
+
+                    <p><strong>Nuestro sistema:</strong> 1 grado de libertad (solo movimiento horizontal en una
+                        dimensión)</p>
+
+                    <div class="example">
+                        <h4>Ejemplos comparativos:</h4>
+                        <table>
+                            <tr>
+                                <th>Sistema</th>
+                                <th>Grados de Libertad</th>
+                                <th>Descripción</th>
+                            </tr>
+                            <tr>
+                                <td>Masa-resorte simple</td>
+                                <td>1</td>
+                                <td>Solo posición x</td>
+                            </tr>
+                            <tr>
+                                <td>Péndulo simple</td>
+                                <td>1</td>
+                                <td>Solo ángulo θ</td>
+                            </tr>
+                            <tr>
+                                <td>Péndulo doble</td>
+                                <td>2</td>
+                                <td>Dos ángulos θ₁ y θ₂</td>
+                            </tr>
+                            <tr>
+                                <td>Partícula libre en 3D</td>
+                                <td>3</td>
+                                <td>Posiciones x, y, z</td>
+                            </tr>
+                            <tr>
+                                <td>Auto (suspensión)</td>
+                                <td>4+</td>
+                                <td>Una por cada rueda + carrocería</td>
+                            </tr>
+                            <tr>
+                                <td>Robot humanoide</td>
+                                <td>20-30+</td>
+                                <td>Múltiples articulaciones</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <p><strong>Regla importante:</strong> Más grados de libertad = más frecuencias naturales = más
+                        posibilidades de resonancia.</p>
+
+                    <p><strong>Ejemplo:</strong> Un puente tiene frecuencias naturales para:</p>
+                    <ul>
+                        <li>Flexión vertical</li>
+                        <li>Flexión lateral</li>
+                        <li>Torsión (giro)</li>
+                        <li>Modos combinados</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>❓ ¿Cómo se resuelve numéricamente la ecuación diferencial?</h4>
+                <div class="answer">
+                    <p><strong>Método usado en el simulador:</strong> Runge-Kutta de orden 4/5 adaptativo (RK45)</p>
+
+                    <p><strong>Idea básica del método numérico:</strong></p>
+                    <ol>
+                        <li>Dividir el tiempo en pasos pequeños (Δt)</li>
+                        <li>En cada paso, calcular la derivada (velocidad y aceleración)</li>
+                        <li>Usar la derivada para estimar el siguiente estado</li>
+                        <li>Repetir para todo el intervalo de tiempo</li>
+                    </ol>
+
+                    <div class="formula">
+                        Euler Simple: y(t + Δt) ≈ y(t) + Δt · y'(t)
+                    </div>
+
+                    <p><strong>Runge-Kutta es más sofisticado:</strong></p>
+                    <ul>
+                        <li>Calcula 4-5 derivadas intermedias en cada paso</li>
+                        <li>Las combina con pesos específicos</li>
+                        <li>Error por paso: O(h⁵) vs O(h²) en Euler</li>
+                        <li>Adaptativo: ajusta el tamaño del paso automáticamente</li>
+                    </ul>
+
+                    <p><strong>¿Por qué no resolver analíticamente?</strong></p>
+                    <ul>
+                        <li>Con amortiguamiento + fuerza externa, la solución analítica es muy compleja</li>
+                        <li>Diferentes tipos de fuerza requieren soluciones diferentes</li>
+                        <li>Los métodos numéricos son más versátiles</li>
+                        <li>Permiten cambios de parámetros en tiempo real</li>
+                        <li>Pueden manejar sistemas no lineales</li>
+                    </ul>
+
+                    <div class="tip">
+                        <p><strong>En Python:</strong> Usamos `scipy.integrate.solve_ivp` con método 'RK45'. Es estable,
+                            preciso y usado en investigación científica real.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>❓ ¿Qué es el factor de calidad (Q)?</h4>
+                <div class="answer">
+                    <p><strong>Definición:</strong> Mide cuán "aguda" es la resonancia. Es el factor de amplificación
+                        máximo en resonancia.</p>
+
+                    <div class="formula">
+                        Q = ω_natural × m / c = √(m·k) / c
+                    </div>
+
+                    <p><strong>También se puede expresar como:</strong></p>
+                    <div class="formula">
+                        Q = (Energía almacenada) / (Energía disipada por ciclo)
+                    </div>
+
+                    <p><strong>Interpretación física:</strong></p>
+                    <table>
+                        <tr>
+                            <th>Valor de Q</th>
+                            <th>Significado</th>
+                            <th>Ejemplo</th>
+                        </tr>
+                        <tr>
+                            <td>Q &lt; 0.5</td>
+                            <td>Muy amortiguado (sobreamortiguado)</td>
+                            <td>Puerta con cierra-puertas hidráulico</td>
+                        </tr>
+                        <tr>
+                            <td>Q ≈ 1</td>
+                            <td>Críticamente amortiguado</td>
+                            <td>Amortiguador de auto ideal</td>
+                        </tr>
+                        <tr>
+                            <td>Q = 5-10</td>
+                            <td>Poco amortiguado</td>
+                            <td>Campana de iglesia</td>
+                        </tr>
+                        <tr>
+                            <td>Q = 100</td>
+                            <td>Muy poco amortiguado</td>
+                            <td>Diapasón</td>
+                        </tr>
+                        <tr>
+                            <td>Q = 10,000+</td>
+                            <td>Casi sin amortiguamiento</td>
+                            <td>Cristal de cuarzo en relojes</td>
+                        </tr>
+                    </table>
+
+                    <p><strong>En resonancia:</strong> La amplificación es aproximadamente Q veces la respuesta
+                        estática.</p>
+                    <p>Si Q=10, una fuerza de 1N puede causar una respuesta equivalente a 10N aplicados estáticamente.
+                    </p>
+
+                    <div class="example">
+                        <h4>Cálculo con nuestros parámetros:</h4>
+                        <p>Para el experimento "Normal" (m=1, k=4, c=0.1):</p>
+                        <div class="formula">
+                            Q = √(1×4) / 0.1 = 2 / 0.1 = 20
+                        </div>
+                        <p>¡Es un sistema con Q alto! Por eso vemos resonancia tan dramática.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>❓ ¿Existe la anti-resonancia?</h4>
+                <div class="answer">
+                    <p><strong>¡SÍ! También llamada "notch", "cero de transmisión" o "filtro de rechazo".</strong></p>
+
+                    <p><strong>¿Qué es?</strong> Una frecuencia donde la respuesta del sistema se minimiza o anula
+                        completamente.</p>
+
+                    <p><strong>Ocurre en sistemas con:</strong></p>
+                    <ul>
+                        <li>Múltiples grados de libertad</li>
+                        <li>Múltiples masas acopladas</li>
+                        <li>Amortiguadores de masa sintonizada</li>
+                    </ul>
+
+                    <p><strong>Principio:</strong> Dos oscilaciones de igual amplitud pero fase opuesta se cancelan
+                        entre sí.</p>
+
+                    <div class="example">
+                        <h4>Aplicaciones prácticas:</h4>
+
+                        <p><strong>1. Auriculares con cancelación de ruido:</strong></p>
+                        <ul>
+                            <li>Micrófonos detectan ruido externo</li>
+                            <li>Generan señal en anti-fase (180° desfasada)</li>
+                            <li>Las ondas se cancelan mutuamente</li>
+                            <li>Resultado: silencio relativo</li>
+                        </ul>
+
+                        <p><strong>2. Absorbedores de vibración:</strong></p>
+                        <ul>
+                            <li>Se diseñan para eliminar frecuencias específicas</li>
+                            <li>Usados en maquinaria industrial</li>
+                            <li>Protegen componentes sensibles</li>
+                        </ul>
+
+                        <p><strong>3. Filtros electrónicos:</strong></p>
+                        <ul>
+                            <li>Circuitos RLC pueden bloquear frecuencias específicas</li>
+                            <li>Usados en radios, telecomunicaciones</li>
+                            <li>Eliminan interferencias</li>
+                        </ul>
+
+                        <p><strong>4. Amortiguadores de masa sintonizada (TMD):</strong></p>
+                        <ul>
+                            <li>Crean anti-resonancia a la frecuencia del edificio</li>
+                            <li>Masa oscila en dirección opuesta</li>
+                            <li>Reduce movimiento del edificio</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>❓ ¿Cómo se relaciona esto con circuitos eléctricos?</h4>
+                <div class="answer">
+                    <p><strong>¡Son matemáticamente idénticos! Analogía completa:</strong></p>
+
+                    <table>
+                        <tr>
+                            <th>Sistema Mecánico</th>
+                            <th>Sistema Eléctrico</th>
+                            <th>Unidades</th>
+                        </tr>
+                        <tr>
+                            <td>Masa (m)</td>
+                            <td>Inductancia (L)</td>
+                            <td>kg / Henry (H)</td>
+                        </tr>
+                        <tr>
+                            <td>Amortiguamiento (c)</td>
+                            <td>Resistencia (R)</td>
+                            <td>N·s/m / Ohm (Ω)</td>
+                        </tr>
+                        <tr>
+                            <td>Rigidez (1/k)</td>
+                            <td>Capacitancia (C)</td>
+                            <td>m/N / Farad (F)</td>
+                        </tr>
+                        <tr>
+                            <td>Fuerza (F)</td>
+                            <td>Voltaje (V)</td>
+                            <td>Newton (N) / Volt (V)</td>
+                        </tr>
+                        <tr>
+                            <td>Velocidad (v)</td>
+                            <td>Corriente (I)</td>
+                            <td>m/s / Ampere (A)</td>
+                        </tr>
+                        <tr>
+                            <td>Posición (x)</td>
+                            <td>Carga (Q)</td>
+                            <td>metro (m) / Coulomb (C)</td>
+                        </tr>
+                        <tr>
+                            <td>Energía cinética</td>
+                            <td>Energía magnética</td>
+                            <td>½mv² / ½LI²</td>
+                        </tr>
+                        <tr>
+                            <td>Energía potencial</td>
+                            <td>Energía eléctrica</td>
+                            <td>½kx² / ½Q²/C</td>
+                        </tr>
+                    </table>
+
+                    <p><strong>Ecuación del circuito RLC serie:</strong></p>
+                    <div class="formula">
+                        L·d²Q/dt² + R·dQ/dt + Q/C = V(t)
+                    </div>
+
+                    <p><strong>Ecuación del sistema masa-resorte:</strong></p>
+                    <div class="formula">
+                        m·d²x/dt² + c·dx/dt + k·x = F(t)
+                    </div>
+
+                    <p><strong>¡Son idénticas!</strong> Solo cambian los símbolos y las unidades.</p>
+
+                    <div class="example">
+                        <h4>Aplicaciones prácticas:</h4>
+
+                        <p><strong>Circuitos resonantes:</strong></p>
+                        <ul>
+                            <li><strong>Radio FM:</strong> Sintonizar es ajustar la capacitancia para que la frecuencia
+                                natural del circuito LC coincida con la estación deseada</li>
+                            <li><strong>WiFi/Antenas:</strong> Diseñadas para resonar a 2.4 GHz o 5 GHz</li>
+                            <li><strong>Circuitos de filtro:</strong> Usan resonancia para seleccionar/rechazar
+                                frecuencias</li>
+                            <li><strong>Transmisión inalámbrica de energía:</strong> Tesla usó resonancia
+                                electromagnética</li>
+                        </ul>
+
+                        <p><strong>Por qué es útil:</strong></p>
+                        <ul>
+                            <li>Los ingenieros eléctricos usan la intuición mecánica</li>
+                            <li>Se pueden probar diseños mecánicos con circuitos (más barato)</li>
+                            <li>Las mismas matemáticas sirven para ambos campos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>❓ ¿Qué es el espacio de fases?</h4>
+                <div class="answer">
+                    <p><strong>Definición:</strong> Un gráfico que muestra la posición vs velocidad del sistema. Cada
+                        punto representa un "estado" completo.</p>
+
+                    <p><strong>Para nuestro sistema:</strong></p>
+                    <ul>
+                        <li><strong>Eje X:</strong> Posición (x)</li>
+                        <li><strong>Eje Y:</strong> Velocidad (dx/dt)</li>
+                        <li><strong>Trayectoria:</strong> Cómo evoluciona el estado con el tiempo</li>
+                    </ul>
+
+                    <p><strong>Patrones típicos:</strong></p>
+
+                    <div class="grid-2">
+                        <div class="card">
+                            <h4>Sin amortiguamiento</h4>
+                            <ul>
+                                <li>Trayectoria: Círculo o elipse cerrada</li>
+                                <li>El sistema repite el mismo estado</li>
+                                <li>Energía constante</li>
+                            </ul>
+                        </div>
+
+                        <div class="card">
+                            <h4>Con amortiguamiento</h4>
+                            <ul>
+                                <li>Trayectoria: Espiral hacia el centro</li>
+                                <li>Converge al punto (0,0)</li>
+                                <li>Energía decrece</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="card">
+                            <h4>Con fuerza periódica</h4>
+                            <ul>
+                                <li>Trayectoria: Ciclo límite</li>
+                                <li>Converge a una órbita cerrada</li>
+                                <li>Comportamiento periódico estable</li>
+                            </ul>
+                        </div>
+
+                        <div class="card">
+                            <h4>En resonancia</h4>
+                            <ul>
+                                <li>Trayectoria: Espiral hacia afuera</li>
+                                <li>Amplitud crece sin límite</li>
+                                <li>Sistema inestable</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <p><strong>Utilidad:</strong> El espacio de fases permite visualizar la dinámica completa del
+                        sistema de un vistazo. Es fundamental en teoría de sistemas dinámicos y caos.</p>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>❓ ¿Qué pasa con sistemas no lineales?</h4>
+                <div class="answer">
+                    <p><strong>Nuestro sistema es LINEAL:</strong> La fuerza del resorte es proporcional al
+                        desplazamiento (F = -k·x).</p>
+
+                    <p><strong>Sistemas NO LINEALES tienen términos como:</strong></p>
+                    <div class="formula">
+                        F = -k·x - α·x² - β·x³
+                    </div>
+
+                    <p><strong>Ejemplos de no linealidad:</strong></p>
+                    <ul>
+                        <li><strong>Resorte duro:</strong> Se vuelve más rígido al estirarse mucho</li>
+                        <li><strong>Resorte suave:</strong> Se vuelve más flexible al estirarse</li>
+                        <li><strong>Péndulo grande:</strong> sin(θ) ≠ θ para ángulos grandes</li>
+                        <li><strong>Amortiguamiento viscoso cuadrático:</strong> Proporcional a v²</li>
+                    </ul>
+
+                    <p><strong>Fenómenos que SOLO aparecen en sistemas no lineales:</strong></p>
+                    <ul>
+                        <li>🌀 <strong>Caos determinista:</strong> Comportamiento impredecible a largo plazo</li>
+                        <li>🔄 <strong>Bifurcaciones:</strong> Cambios cualitativos en el comportamiento</li>
+                        <li>🎭 <strong>Múltiples estados estables:</strong> Biestabilidad</li>
+                        <li>📊 <strong>Salto de frecuencia:</strong> La amplitud salta discontinuamente</li>
+                        <li>🌊 <strong>Subarmónicos:</strong> Respuesta a fracciones de la frecuencia de excitación</li>
+                        <li>⚡ <strong>Resonancia paramétrica:</strong> Resonancia por variación de parámetros</li>
+                    </ul>
+
+                    <div class="example">
+                        <h4>Ejemplo famoso: Péndulo doble</h4>
+                        <p>Un péndulo con otro péndulo colgando de él:</p>
+                        <ul>
+                            <li>Sistema no lineal y caótico</li>
+                            <li>Condiciones iniciales casi idénticas → resultados completamente diferentes</li>
+                            <li>Imposible predecir a largo plazo</li>
+                            <li>Usado para demostrar teoría del caos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>❓ ¿Cómo se mide experimentalmente la frecuencia natural?</h4>
+                <div class="answer">
+                    <p><strong>Métodos experimentales comunes:</strong></p>
+
+                    <p><strong>1. Método de caída libre (decay test):</strong></p>
+                    <ol>
+                        <li>Desplazar el sistema de su equilibrio</li>
+                        <li>Soltarlo sin velocidad inicial</li>
+                        <li>Medir el tiempo para N oscilaciones completas</li>
+                        <li>Calcular: f = N / tiempo_total</li>
+                    </ol>
+
+                    <p><strong>2. Barrido de frecuencia (frequency sweep):</strong></p>
+                    <ol>
+                        <li>Aplicar fuerza externa con frecuencia variable</li>
+                        <li>Empezar con frecuencia baja, aumentar gradualmente</li>
+                        <li>Medir la amplitud de respuesta</li>
+                        <li>La frecuencia que da máxima amplitud = frecuencia natural</li>
+                    </ol>
+
+                    <p><strong>3. Impulso (impact test):</strong></p>
+                    <ol>
+                        <li>Golpear el sistema con un martillo instrumentado</li>
+                        <li>El impulso contiene todas las frecuencias</li>
+                        <li>El sistema responde más fuerte a su frecuencia natural</li>
+                        <li>Usar FFT (Transformada Rápida de Fourier) para identificar picos</li>
+                    </ol>
+
+                    <p><strong>4. Ruido blanco:</strong></p>
+                    <ol>
+                        <li>Excitar con señal aleatoria (contiene todas frecuencias)</li>
+                        <li>Medir respuesta</li>
+                        <li>Analizar espectro de frecuencias</li>
+                        <li>Picos en el espectro = frecuencias naturales</li>
+                    </ol>
+
+                    <div class="tip">
+                        <p><strong>Instrumentos necesarios:</strong></p>
+                        <ul>
+                            <li>📱 <strong>Básico:</strong> Cronómetro y regla</li>
+                            <li>📹 <strong>Intermedio:</strong> Cámara de alta velocidad + software de análisis</li>
+                            <li>🔬 <strong>Avanzado:</strong> Acelerómetros, analizador de espectros, LVDT (transductor
+                                de desplazamiento)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3>⚡ Preguntas sobre el Simulador</h3>
+
+            <div class="question">
+                <h4>❓ ¿Por qué a veces la animación se ve entrecortada?</h4>
+                <div class="answer">
+                    <p><strong>Razones técnicas:</strong></p>
+
+                    <ul>
+                        <li>⏱️ <strong>Frecuencias muy altas:</strong> Si ω > 6 rad/s, el sistema oscila tan rápido que
+                            40 FPS no son suficientes para mostrar todas las oscilaciones</li>
+                        <li>💻 <strong>Procesador lento:</strong> Computadoras antiguas pueden tener problemas
+                            renderizando gráficos en tiempo real</li>
+                        <li>📊 <strong>Resolución temporal:</strong> Calculamos 800 puntos distribuidos en 20 segundos
+                            (0.025s por punto)</li>
+                        <li>🎬 <strong>FPS de animación:</strong> 40 frames por segundo (1 frame cada 25ms)</li>
+                        <li>🔄 <strong>Interpolación:</strong> La animación interpola entre puntos calculados</li>
+                    </ul>
+
+                    <p><strong>Teorema de Nyquist-Shannon:</strong></p>
+                    <div class="formula">
+                        Frecuencia_muestreo ≥ 2 × Frecuencia_máxima
+                    </div>
+                    <p>Para ver correctamente oscilaciones de 4 Hz (ω≈25 rad/s), necesitamos al menos 8 FPS. Nuestros 40
+                        FPS son suficientes para la mayoría de casos.</p>
+
+                    <p><strong>Solución para mejor visualización:</strong></p>
+                    <ul>
+                        <li>✅ Usar frecuencias menores (0.5-4 rad/s)</li>
+                        <li>✅ Aumentar el tiempo de simulación (editar código: t_max = 40)</li>
+                        <li>✅ Reducir el intervalo de animación (editar: interval=20 para 50 FPS)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>❓ ¿Puedo cambiar el código del simulador?</h4>
+                <div class="answer">
+                    <p><strong>¡Por supuesto! Está diseñado para ser educativo y modificable.</strong></p>
+
+                    <p><strong>Ideas para modificaciones principiantes:</strong></p>
+                    <ul>
+                        <li>🎨 Cambiar colores del resorte y masa</li>
+                        <li>📏 Modificar rangos de parámetros (líneas donde están min_val, max_val)</li>
+                        <li>⏱️ Cambiar duración de la simulación (línea: t_eval = np.linspace(0, 20, 800))</li>
+                        <li>🔢 Ajustar valores por defecto</li>
+                        <li>📝 Añadir más texto informativo</li>
+                    </ul>
+
+                    <p><strong>Ideas para modificaciones intermedias:</strong></p>
+                    <ul>
+                        <li>➕ Añadir nuevos tipos de fuerza (triangular, rampa, exponencial)</li>
+                        <li>📊 Crear gráfica adicional de velocidad o aceleración</li>
+                        <li>🎮 Agregar más experimentos predefinidos</li>
+                        <li>💾 Implementar guardado de configuraciones</li>
+                        <li>🔊 Añadir sonido proporcional a la frecuencia</li>
+                    </ul>
+
+                    <p><strong>Ideas para modificaciones avanzadas:</strong></p>
+                    <ul>
+                        <li>🌀 Añadir visualización del espacio de fases (posición vs velocidad)</li>
+                        <li>📈 Mostrar espectro de frecuencias (FFT)</li>
+                        <li>⚡ Graficar energía cinética vs potencial vs tiempo</li>
+                        <li>🔬 Implementar resorte no lineal (F = -k·x - α·x³)</li>
+                        <li>🎯 Añadir dos masas acopladas (sistema de 2 grados de libertad)</li>
+                        <li>🌊 Simular amortiguamiento viscoso cuadrático</li>
+                    </ul>
+
+                    <div class="tip">
+                        <p><strong>Para estudiantes:</strong> Modificar el código es una excelente manera de aprender:
+                        </p>
+                        <ul>
+                            <li>Física: Al experimentar con ecuaciones</li>
+                            <li>Programación: Python, NumPy, Matplotlib</li>
+                            <li>Matemáticas: Ecuaciones diferenciales, métodos numéricos</li>
+                            <li>Interfaz de usuario: Tkinter, diseño GUI</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>❓ ¿Qué tecnologías se usaron y por qué?</h4>
+                <div class="answer">
+                    <p><strong>Stack tecnológico completo:</strong></p>
+
+                    <table>
+                        <tr>
+                            <th>Tecnología</th>
+                            <th>Versión</th>
+                            <th>Uso</th>
+                            <th>Por qué se eligió</th>
+                        </tr>
+                        <tr>
+                            <td>Python</td>
+                            <td>3.x</td>
+                            <td>Lenguaje principal</td>
+                            <td>Fácil de aprender, excelente para ciencia, gran comunidad</td>
+                        </tr>
+                        <tr>
+                            <td>NumPy</td>
+                            <td>Latest</td>
+                            <td>Cálculos matemáticos</td>
+                            <td>Operaciones vectoriales eficientes, manejo de arrays</td>
+                        </tr>
+                        <tr>
+                            <td>SciPy</td>
+                            <td>Latest</td>
+                            <td>Resolver EDOs</td>
+                            <td>Algoritmos numéricos probados y optimizados</td>
+                        </tr>
+                        <tr>
+                            <td>Matplotlib</td>
+                            <td>Latest</td>
+                            <td>Gráficas y animación</td>
+                            <td>Estándar en visualización científica, muy flexible</td>
+                        </tr>
+                        <tr>
+                            <td>Tkinter</td>
+                            <td>Built-in</td>
+                            <td>Interfaz gráfica</td>
+                            <td>Viene incluido con Python, no requiere instalación extra</td>
+                        </tr>
+                    </table>
+
+                    <p><strong>Estadísticas del código:</strong></p>
+                    <ul>
+                        <li>📊 Total de líneas: ~850 líneas</li>
+                        <li>📁 Archivos: 1 archivo principal</li>
+                        <li>🎨 Clases: 2 (WelcomeScreen, MassSpringApp)</li>
+                        <li>⚙️ Funciones principales: 15+</li>
+                        <li>💾 Tamaño: ~35 KB</li>
+                        <li>⏱️ Tiempo de desarrollo estimado: 15-20 horas</li>
+                    </ul>
+
+                    <p><strong>Alternativas consideradas:</strong></p>
+                    <ul>
+                        <li><strong>PyQt/PySide:</strong> Más moderno pero requiere instalación adicional</li>
+                        <li><strong>Dash/Plotly:</strong> Web-based, requiere servidor</li>
+                        <li><strong>JavaScript/p5.js:</strong> Multiplataforma pero más complejo para física</li>
+                        <li><strong>MATLAB:</strong> Excelente pero requiere licencia cara</li>
+                    </ul>
+
+                    <p><strong>Por qué Python fue la mejor opción:</strong></p>
+                    <ul>
+                        <li>✅ Gratuito y open source</li>
+                        <li>✅ Excelente para enseñanza</li>
+                        <li>✅ Gran cantidad de librerías científicas</li>
+                        <li>✅ Código legible y mantenible</li>
+                        <li>✅ Multiplataforma (Windows, Mac, Linux)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>❓ ¿El simulador tiene limitaciones?</h4>
+                <div class="answer">
+                    <p><strong>Sí, como todo modelo tiene limitaciones. Es importante entenderlas:</strong></p>
+
+                    <p><strong>Limitaciones físicas del modelo:</strong></p>
+                    <ul>
+                        <li>❌ <strong>Sistema lineal:</strong> No captura comportamientos no lineales de resortes reales
+                        </li>
+                        <li>❌ <strong>1D:</strong> Solo movimiento en una dirección (la realidad es 3D)</li>
+                        <li>❌ <strong>Resorte sin masa:</strong> Los resortes reales tienen masa distribuida</li>
+                        <li>❌ <strong>Amortiguamiento viscoso simple:</strong> El real puede ser más complejo</li>
+                        <li>❌ <strong>Sin fricción seca (Coulomb):</strong> Solo amortiguamiento viscoso</li>
+                        <li>❌ <strong>Sin limitadores:</strong> En la realidad hay topes que limitan el movimiento</li>
+                    </ul>
+
+                    <p><strong>Limitaciones computacionales:</strong></p>
+                    <ul>
+                        <li>⚠️ <strong>Errores numéricos:</strong> La computadora tiene precisión finita</li>
+                        <li>⚠️ <strong>Tiempo de cálculo:</strong> Simulaciones muy largas pueden ser lentas</li>
+                        <li>⚠️ <strong>Resolución temporal:</strong> 800 puntos pueden no ser suficientes para
+                            frecuencias muy altas</li>
+                        <li>⚠️ <strong>Aliasing visual:</strong> Frecuencias altas pueden verse incorrectamente</li>
+                    </ul>
+
+                    <p><strong>Limitaciones prácticas:</strong></p>
+                    <ul>
+                        <li>🔒 <strong>Parámetros limitados:</strong> Los rangos están acotados para visualización
+                            práctica</li>
+                        <li>🔒 <strong>Sin interacción en tiempo real:</strong> Hay que reiniciar para cambiar
+                            parámetros</li>
+                        <li>🔒 <strong>Sin exportación de datos:</strong> No guarda las series temporales generadas</li>
+                    </ul>
+
+                    <div class="tip">
+                        <p><strong>Importante:</strong> Estas limitaciones NO invalidan el simulador. Todos los modelos
+                            son simplificaciones. Como dijo George Box: <em>"Todos los modelos están equivocados, pero
+                                algunos son útiles."</em></p>
+                        <p>Este modelo es muy útil para entender los conceptos fundamentales.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>❓ ¿Cómo puedo hacer este proyecto aún mejor?</h4>
+                <div class="answer">
+                    <p><strong>Mejoras sugeridas para impresionar en la feria:</strong></p>
+
+                    <p><strong>1. Mejoras de software (Fácil):</strong></p>
+                    <ul>
+                        <li>✨ Añadir más experimentos predefinidos con descripciones</li>
+                        <li>📊 Gráfica adicional de energía (cinética, potencial, total)</li>
+                        <li>🎵 Añadir sonido cuya frecuencia cambie con la oscilación</li>
+                        <li>📸 Botón para capturar/guardar gráficas</li>
+                        <li>💾 Exportar datos a CSV para análisis en Excel</li>
+                        <li>🌐 Crear versión web con JavaScript</li>
+                    </ul>
+
+                    <p><strong>2. Mejoras de visualización (Media):</strong></p>
+                    <ul>
+                        <li>🌀 Diagrama de espacio de fases (posición vs velocidad)</li>
+                        <li>📈 Análisis de Fourier en tiempo real (FFT)</li>
+                        <li>🎯 Indicador visual cuando se está cerca de resonancia</li>
+                        <li>📊 Medidor de energía total del sistema</li>
+                        <li>🔴 Grabación de video de la simulación</li>
+                    </ul>
+
+                    <p><strong>3. Extensiones físicas (Avanzado):</strong></p>
+                    <ul>
+                        <li>⚙️ Sistema con 2 masas acopladas (mostrar modos normales)</li>
+                        <li>🌊 Resorte no lineal (término cúbico)</li>
+                        <li>🎪 Péndulo acoplado al resorte</li>
+                        <li>🔄 Sistema 2D (masa puede moverse en plano)</li>
+                        <li>🌀 Amortiguamiento no lineal (proporcional a v²)</li>
+                        <li>⚡ Forzamiento caótico</li>
+                    </ul>
+
+                    <p><strong>4. Componente físico (¡Muy impactante!):</strong></p>
+                    <ul>
+                        <li>🔨 Construir un sistema masa-resorte real al lado de la computadora</li>
+                        <li>📹 Cámara que capte el movimiento real</li>
+                        <li>🔬 Comparar simulación vs realidad en tiempo real</li>
+                        <li>📊 Usar sensores (Arduino + acelerómetro) para medir datos reales</li>
+                        <li>🎮 Control físico (potenciómetros) para ajustar parámetros</li>
+                    </ul>
+
+                    <p><strong>5. Material complementario (Presenta profesionalmente):</strong></p>
+                    <ul>
+                        <li>📋 Póster científico con ecuaciones y gráficas</li>
+                        <li>📱 Código QR para que la gente descargue el código</li>
+                        <li>📚 Folletos explicativos para llevar</li>
+                        <li>🎥 Video corto explicativo en loop</li>
+                        <li>🏆 "Desafío": Pedir al público que encuentre la resonancia</li>
+                    </ul>
+
+                    <p><strong>6. Demostración interactiva:</strong></p>
+                    <ul>
+                        <li>🎮 Dejar que el público experimente directamente</li>
+                        <li>🏅 Sistema de "logros" (encontrar resonancia, probar todos los modos, etc.)</li>
+                        <li>📊 Leaderboard de quién logra la mayor amplitud</li>
+                        <li>🎁 Stickers o premios pequeños para participantes</li>
+                    </ul>
+
+                    <div class="important">
+                        <h4>🌟 Consejo de Oro:</h4>
+                        <p>No intentes hacer TODAS estas mejoras. Elige 2-3 que te entusiasmen y hazlas MUY bien.
+                            Calidad sobre cantidad.</p>
+                        <p><strong>Lo más importante:</strong> Que TÚ entiendas perfectamente todo lo que presentas. Un
+                            proyecto simple pero bien explicado gana sobre uno complejo mal entendido.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4>❓ ¿Dónde puedo aprender más sobre estos temas?</h4>
+                <div class="answer">
+                    <p><strong>Recursos recomendados por nivel:</strong></p>
+
+                    <p><strong>📱 Apps y simuladores interactivos:</strong></p>
+                    <ul>
+                        <li><strong>PhET Interactive Simulations</strong> (Universidad de Colorado) - Gratis, excelente
+                        </li>
+                        <li><strong>Wolfram Demonstrations Project</strong> - Miles de simulaciones matemáticas</li>
+                        <li><strong>GeoGebra</strong> - Matemáticas interactivas</li>
+                        <li><strong>Algodoo</strong> - Física 2D divertida</li>
+                    </ul>
+
+                    <p><strong>🎥 Canales de YouTube (Español):</strong></p>
+                    <ul>
+                        <li><strong>Derivando</strong> - Matemáticas y física</li>
+                        <li><strong>Date un Vlog</strong> - Ciencia entretenida</li>
+                        <li><strong>CdeCiencia</strong> - Física explicada simple</li>
+                        <li><strong>Quantum Fracture</strong> - Física moderna</li>
+                    </ul>
+
+                    <p><strong>🎥 Canales de YouTube (Inglés):</strong></p>
+                    <ul>
+                        <li><strong>3Blue1Brown</strong> - Matemáticas visuales (con subtítulos)</li>
+                        <li><strong>Veritasium</strong> - Ciencia experimental</li>
+                        <li><strong>MIT OpenCourseWare</strong> - Clases universitarias completas</li>
+                        <li><strong>Steve Brunton</strong> - Control y dinámica</li>
+                    </ul>
+
+                    <p><strong>📚 Libros para empezar:</strong></p>
+                    <ul>
+                        <li><em>"Física Conceptual"</em> - Paul Hewitt (muy visual)</li>
+                        <li><em>"El universo en tu mano"</em> - Christophe Galfard</li>
+                        <li><em>"La realidad oculta"</em> - Brian Greene</li>
+                    </ul>
+
+                    <p><strong>💻 Plataformas de aprendizaje:</strong></p>
+                    <ul>
+                        <li><strong>Khan Academy</strong> - Matemáticas y física gratis</li>
+                        <li><strong>Coursera</strong> - Cursos universitarios (muchos gratis)</li>
+                        <li><strong>edX</strong> - Cursos del MIT, Harvard, etc.</li>
+                        <li><strong>Brilliant.org</strong> - Aprendizaje interactivo</li>
+                    </ul>
+
+                    <p><strong>🔬 Experimentos caseros:</strong></p>
+                    <ul>
+                        <li>Construye tu propio sistema masa-resorte con materiales reciclados</li>
+                        <li>Experimenta con péndulos de diferentes longitudes</li>
+                        <li>Prueba resonancia con copas de cristal</li>
+                        <li>Construye un "teléfono de vasos" para ver transmisión de ondas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 9. CÓDIGO DEL SIMULADOR -->
+        <div class="section" id="codigo">
+            <h2><span class="emoji">💻</span>9. EL CÓDIGO DEL SIMULADOR</h2>
+
+            <div class="concept-box">
+                <h3>Estructura General del Programa</h3>
+
+                <p><strong>El simulador consta de 2 clases principales:</strong></p>
+
+                <div class="grid-2">
+                    <div class="card">
+                        <h4>1. WelcomeScreen</h4>
+                        <p>Pantalla de bienvenida</p>
+                        <ul>
+                            <li>Muestra introducción</li>
+                            <li>Explica conceptos básicos</li>
+                            <li>Da instrucciones</li>
+                            <li>Botón para iniciar</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h4>2. MassSpringApp</h4>
+                        <p>Aplicación principal</p>
+                        <ul>
+                            <li>Interfaz interactiva</li>
+                            <li>Controles de parámetros</li>
+                            <li>Animación en tiempo real</li>
+                            <li>Gráficas dinámicas</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Funciones Clave Explicadas</h3>
+
+                <div class="concept-box">
+                    <h4>1. solve_system() - Resuelve la ecuación diferencial</h4>
+                    <div class="code-display">def solve_system(self):
+                        # Crear 800 puntos de evaluación entre 0 y 20 segundos
+                        t_eval = np.linspace(0, 20, 800)
+
+                        # Resolver la ecuación diferencial
+                        sol = solve_ivp(
+                        self.equation, # Función que define la ED
+                        [0, 20], # Intervalo de tiempo [inicio, fin]
+                        [0, 0], # Condiciones iniciales [posición, velocidad]
+                        t_eval=t_eval, # Puntos donde evaluar la solución
+                        method='RK45' # Método Runge-Kutta de orden 4/5
+                        )
+
+                        return sol.t, sol.y[0] # Devolver tiempo y posición</div>
+
+                    <p><strong>¿Qué hace?</strong> Calcula toda la trayectoria del sistema desde t=0 hasta t=20 segundos
+                        usando el método numérico Runge-Kutta de orden 4/5 adaptativo.</p>
+
+                    <p><strong>Parámetros importantes:</strong></p>
+                    <ul>
+                        <li><strong>800 puntos:</strong> Balance entre precisión y velocidad</li>
+                        <li><strong>20 segundos:</strong> Tiempo suficiente para ver patrones</li>
+                        <li><strong>RK45:</strong> Método preciso y estable</li>
+                        <li><strong>[0, 0]:</strong> Sistema empieza en reposo en equilibrio</li>
+                    </ul>
+                </div>
+
+                <div class="concept-box">
+                    <h4>2. equation() - Define la ecuación diferencial</h4>
+                    <div class="code-display">def equation(self, t, Y):
+                        # Desempaquetar el estado actual
+                        y, yp = Y # y = posición, yp = velocidad
+
+                        # Calcular la fuerza externa en este instante
+                        force = self.external_force(t)
+
+                        # Derivadas (sistema de primer orden)
+                        dydt = yp # dy/dt = velocidad
+                        dypdt = (-self.k * y - self.c * yp + force) / self.m # d²y/dt²
+
+                        return [dydt, dypdt] # Devolver ambas derivadas</div>
+
+                    <p><strong>Transformación matemática:</strong></p>
+                    <div class="formula">
+                        m·y'' + c·y' + k·y = F(t)
+                        <br>⬇️<br>
+                        y'' = (-k·y - c·y' + F(t)) / m
+                    </div>
+
+                    <p><strong>Sistema de primer orden:</strong> Convertimos una ecuación de segundo orden en un sistema
+                        de dos ecuaciones de primer orden:</p>
+                    <ul>
+                        <li>dy/dt = y' (velocidad)</li>
+                        <li>dy'/dt = y'' (aceleración)</li>
+                    </ul>
+                </div>
+
+                <div class="concept-box">
+                    <h4>3. external_force() - Calcula la fuerza externa</h4>
+                    <div class="code-display">def external_force(self, t):
+                        # Mapeo de nombres de interfaz a tipos
+                        force_type_map = {
+                        "Coseno": "cos",
+                        "Seno": "sin",
+                        "Pulso": "pulse",
+                        "Escalón": "step"
+                        }
+
+                        actual_type = force_type_map.get(self.force_var.get(), "cos")
+
+                        # Calcular según el tipo
+                        if actual_type == "cos":
+                        return self.F0 * np.cos(self.omega * t)
+                        elif actual_type == "sin":
+                        return self.F0 * np.sin(self.omega * t)
+                        elif actual_type == "pulse":
+                        # Onda cuadrada usando signo del seno
+                        return self.F0 * (0.5 + 0.5 * np.sign(np.sin(self.omega * t)))
+                        elif actual_type == "step":
+                        # Escalón en t = 2 segundos
+                        return self.F0 * (t > 2.0)
+
+                        return 0.0 # Por defecto sin fuerza</div>
+
+                    <p><strong>Función versátil:</strong> Implementa 4 tipos diferentes de fuerza en una sola función
+                        usando condicionales.</p>
+
+                    <p><strong>Técnica del pulso:</strong> Usa `np.sign(np.sin(...))` para crear una onda cuadrada
+                        (valores +1 o -1), luego escala a [0, F₀].</p>
+                </div>
+
+                <div class="concept-box">
+                    <h4>4. update_animation() - Actualiza cada frame</h4>
+                    <div class="code-display">def update_animation(self, frame):
+                        # Verificar que el frame es válido
+                        if frame >= len(self.solution_t):
+                        return elementos_gráficos
+
+                        # Obtener datos del frame actual
+                        current_y = self.solution_y[frame]
+                        current_t = self.solution_t[frame]
+
+                        # === ACTUALIZAR RESORTE ===
+                        spring_x, spring_y = self.create_spring_coords(current_y)
+                        self.spring_line.set_data(spring_x, spring_y)
+
+                        # === ACTUALIZAR MASA ===
+                        # Posición X: pared en -3, masa en -3 + elongación
+                        self.mass.center = (-3 + current_y + 3, 0)
+
+                        # === ACTUALIZAR GRÁFICA ===
+                        self.graph_line.set_data(
+                        self.solution_t[:frame+1],
+                        self.solution_y[:frame+1]
+                        )
+                        self.time_line.set_xdata([current_t, current_t])
+
+                        # === DETECTAR RESONANCIA ===
+                        natural_freq = np.sqrt(self.k / self.m)
+                        if abs(self.omega - natural_freq) < 0.2 and self.F0> 0:
+                            # ¡RESONANCIA! Cambiar colores
+                            self.res_text.set_text("⚡ ¡RESONANCIA!")
+                            self.mass.set_facecolor("#FFD166") # Amarillo
+                            self.spring_line.set_color("#FF2E63") # Rojo
+                            else:
+                            self.res_text.set_text("")
+                            self.mass.set_facecolor("#FF2E63") # Rojo normal
+                            self.spring_line.set_color("#00D4FF") # Azul normal
+
+                            return elementos_actualizados</div>
+
+                    <p><strong>Se ejecuta 40 veces por segundo</strong> (intervalo de 25ms) para crear animación fluida.
+                    </p>
+
+                    <p><strong>Detección de resonancia:</strong> Compara frecuencia externa con natural. Si la
+                        diferencia es menor a 0.2 rad/s, considera que hay resonancia.</p>
+                </div>
+
+                <div class="concept-box">
+                    <h4>5. create_spring_coords() - Crea el resorte visual</h4>
+                    <div class="code-display">def create_spring_coords(self, y_pos):
+                        # Calcular posición final del resorte
+                        spring_end_x = -3 + y_pos + 3 # Desde pared hasta masa
+
+                        # 80 puntos a lo largo del resorte
+                        x_vals = np.linspace(-3, spring_end_x, 80)
+
+                        # Crear forma sinusoidal (10 espiras)
+                        n_coils = 10
+                        y_vals = 0.2 * np.sin(n_coils * np.pi * np.linspace(0, 1, 80))
+
+                        return x_vals, y_vals</div>
+
+                    <p><strong>Truco visual elegante:</strong> El resorte es una onda sinusoidal que se comprime/estira
+                        proporcionalmente al desplazamiento de la masa.</p>
+
+                    <ul>
+                        <li><strong>80 puntos:</strong> Suficientes para verse suave</li>
+                        <li><strong>10 espiras:</strong> Número de "vueltas" del resorte</li>
+                        <li><strong>Amplitud 0.2:</strong> Ancho visual del resorte</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Flujo del Programa</h3>
+
+            <div class="concept-box">
+                <div class="code-display">1. Inicio
+                    ↓
+                    2. WelcomeScreen (pantalla de bienvenida)
+                    ↓
+                    3. Usuario presiona "INICIAR EXPERIMENTO"
+                    ↓
+                    4. MassSpringApp se inicia
+                    ↓
+                    5. Setup GUI (crear interfaz)
+                    ↓
+                    6. solve_system() → Resolver ED inicial
+                    ↓
+                    7. setup_animation() → Iniciar animación
+                    ↓
+                    8. LOOP infinito:
+                    - update_animation() cada 25ms
+                    - Si usuario cambia parámetro → resolver ED de nuevo
+                    - Actualizar gráficas y panel de info
+                    ↓
+                    9. Usuario cierra ventana → FIN</div>
+            </div>
+
+            <h3>Optimizaciones Implementadas</h3>
+
+            <div class="concept-box">
+                <h4>1. Cálculo eficiente</h4>
+                <ul>
+                    <li>✅ Resolvemos la ED una sola vez, no en cada frame</li>
+                    <li>✅ Usamos NumPy para operaciones vectorizadas (mucho más rápido)</li>
+                    <li>✅ Solo recalculamos cuando cambian parámetros</li>
+                </ul>
+
+                <h4>2. Animación optimizada</h4>
+                <ul>
+                    <li>✅ Usamos `blit=True` en FuncAnimation (solo redibuja lo que cambia)</li>
+                    <li>✅ Limitamos FPS a 40 (suficiente para visualización suave)</li>
+                    <li>✅ Actualizamos solo elementos modificados</li>
+                </ul>
+
+                <h4>3. Interfaz responsiva</h4>
+                <ul>
+                    <li>✅ Botones + y - para cambios rápidos</li>
+                    <li>✅ Valores mostrados en tiempo real</li>
+                    <li>✅ Experimentos predefinidos para demostración fácil</li>
+                </ul>
+            </div>
+
+            <h3>Posibles Mejoras al Código</h3>
+
+            <div class="tip">
+                <h4>Para estudiantes que quieran mejorar:</h4>
+
+                <p><strong>Fácil:</strong></p>
+                <ul>
+                    <li>Añadir más colores y temas visuales</li>
+                    <li>Crear más experimentos predefinidos</li>
+                    <li>Agregar tooltips informativos</li>
+                </ul>
+
+                <p><strong>Medio:</strong></p>
+                <ul>
+                    <li>Implementar guardar/cargar configuraciones</li>
+                    <li>Añadir gráfica de energía vs tiempo</li>
+                    <li>Exportar datos a archivo CSV</li>
+                </ul>
+
+                <p><strong>Avanzado:</strong></p>
+                <ul>
+                    <li>Añadir visualización del espacio de fases</li>
+                    <li>Implementar análisis de Fourier (FFT)</li>
+                    <li>Crear sistema de 2 masas acopladas</li>
+                    <li>Añadir resortes no lineales</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SECCIÓN ADICIONAL: CONSEJOS PARA LA PRESENTACIÓN -->
+        <div class="section">
+            <h2><span class="emoji">🎤</span>10. CONSEJOS PARA TU PRESENTACIÓN EN LA FERIA</h2>
+
+            <h3>📋 Preparación Antes del Evento</h3>
+
+            <div class="tip">
+                <h4>✅ Lista de Verificación (Semana antes)</h4>
+                <ul>
+                    <li>☑️ Probar el simulador en la computadora que usarás</li>
+                    <li>☑️ Imprimir esta guía completa (tener respaldo físico)</li>
+                    <li>☑️ Preparar 3-4 demostraciones clave (practicarlas)</li>
+                    <li>☑️ Practicar explicaciones simples frente al espejo</li>
+                    <li>☑️ Preparar lista de ejemplos cotidianos</li>
+                    <li>☑️ Crear material visual (póster, tarjetas)</li>
+                    <li>☑️ Probar con amigos/familia (feedback)</li>
+                </ul>
+
+                <h4>✅ Lista de Verificación (Día del evento)</h4>
+                <ul>
+                    <li>☑️ Laptop cargada + cargador</li>
+                    <li>☑️ Extensión eléctrica (por si acaso)</li>
+                    <li>☑️ Esta guía impresa o en tablet</li>
+                    <li>☑️ Agua (vas a hablar mucho)</li>
+                    <li>☑️ Llegar 30 min antes para configurar</li>
+                    <li>☑️ Probar el simulador antes de que llegue público</li>
+                    <li>☑️ Tener plan B si falla tecnología</li>
+                </ul>
+            </div>
+
+            <h3>🎯 Estructura de Demostración Sugerida (5-10 min)</h3>
+
+            <div class="concept-box">
+                <h4>⏱️ Minuto 1: Introducción con Gancho</h4>
+                <p><strong>Objetivo:</strong> Capturar atención inmediatamente</p>
+
+                <p><strong>Opción A (Dramática):</strong></p>
+                <p>"¿Sabían que un puente puede colapsar con vientos suaves? En 1940, el puente de Tacoma se destruyó
+                    con vientos de solo 68 km/h. ¿La razón? Esto que estoy a punto de mostrarles: RESONANCIA."</p>
+
+                <p><strong>Opción B (Cotidiana):</strong></p>
+                <p>"¿Alguna vez han empujado a alguien en un columpio? Si empujan en el momento correcto, el columpio va
+                    cada vez más alto. Ese fenómeno simple puede crear edificios, destruir puentes, y hacer música.
+                    Déjenme mostrarles..."</p>
+
+                <p><strong>Opción C (Pregunta):</strong></p>
+                <p>"Levanten la mano si han sentido que su auto rebota después de pasar por un bache. [Esperar
+                    respuestas] Lo que acaban de sentir es física pura. Hoy vamos a entender exactamente por qué pasa
+                    eso."</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>⏱️ Minutos 2-3: Demostración Básica - Experimento "Libre"</h4>
+                <p><strong>Acción:</strong> Seleccionar experimento "Libre"</p>
+
+                <p><strong>Script sugerido:</strong></p>
+                <p>"Primero, lo más simple. Un resorte con una masa, sin fuerzas externas. [Iniciar] Observen: oscila
+                    con un ritmo natural, siempre a la misma velocidad. Esa velocidad se llama <strong>frecuencia
+                        natural</strong>. Cada sistema tiene la suya - cada puente, cada edificio, cada auto."</p>
+
+                <p><strong>Señalar en pantalla:</strong></p>
+                <ul>
+                    <li>"Esta línea azul [gráfica] muestra cómo se mueve en el tiempo"</li>
+                    <li>"El resorte se estira y comprime repetidamente"</li>
+                    <li>"En la vida real, esto se detendría por fricción"</li>
+                </ul>
+            </div>
+
+            <div class="concept-box">
+                <h4>⏱️ Minutos 4-6: ¡El Gran Momento! - Experimento "Resonancia"</h4>
+                <p><strong>Acción:</strong> Cambiar a experimento "Resonancia" con dramatismo</p>
+
+                <p><strong>Script sugerido:</strong></p>
+                <p>"Ahora... [pausa dramática] voy a aplicar una fuerza externa. PERO, voy a aplicarla exactamente a la
+                    frecuencia natural del sistema. ¿Qué creen que pasará? [Esperar respuestas] Observen..."</p>
+
+                <p>[Iniciar y esperar a que crezca la amplitud]</p>
+
+                <p>"¡Vean eso! [Señalar] La masa oscila MUCHO más. ¡Fíjense cómo dice '⚡ RESONANCIA!' arriba! Estoy
+                    aplicando la misma fuerza pequeña, pero el efecto es ENORME."</p>
+
+                <p><strong>Analogía clave:</strong></p>
+                <p>"Es exactamente como el columpio: si empujas en el momento correcto cada vez, sube más y más. Pero si
+                    empujas en el momento equivocado, lo frenas. En resonancia, SIEMPRE empujamos en el momento
+                    perfecto."</p>
+
+                <p><strong>Conexión real:</strong></p>
+                <p>"Esto es lo que destruyó el puente de Tacoma. El viento empujaba a la frecuencia perfecta. Esto es lo
+                    que los ingenieros DEBEN evitar al diseñar edificios y puentes."</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>⏱️ Minutos 7-8: Control y Seguridad - Experimento "Amortiguado"</h4>
+                <p><strong>Acción:</strong> Cambiar a experimento "Amortiguado"</p>
+
+                <p><strong>Script sugerido:</strong></p>
+                <p>"Ahora pensemos como ingenieros. ¿Cómo controlamos la resonancia? Con AMORTIGUAMIENTO - básicamente,
+                    fricción intencional. Observen la diferencia..."</p>
+
+                <p>[Iniciar]</p>
+
+                <p>"¿Ven? Las oscilaciones desaparecen rápido. Esto es exactamente lo que hacen los amortiguadores de su
+                    auto. Sin ellos, cada bache los haría rebotar sin control."</p>
+
+                <p><strong>Comparación directa:</strong></p>
+                <p>"En resonancia: amplitud crece sin control [gesto de crecer]<br>
+                    Con amortiguamiento: amplitud se controla [gesto de calmar]<br>
+                    Por eso los edificios modernos tienen amortiguadores gigantes."</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>⏱️ Minutos 9-10: Interacción y Preguntas</h4>
+                <p><strong>Acción:</strong> Invitar a participar</p>
+
+                <p><strong>Script sugerido:</strong></p>
+                <p>"¿Quieren probarlo ustedes? Vengan, pueden cambiar los parámetros. Intenten encontrar la resonancia -
+                    es como buscar la nota perfecta que hace vibrar todo."</p>
+
+                <p><strong>Si alguien participa:</strong></p>
+                <ul>
+                    <li>Guíalos: "Prueba aumentar la frecuencia... un poco más... ¡ahí! ¡Resonancia!"</li>
+                    <li>Celebra: "¡Perfecto! ¿Ven cómo crece?"</li>
+                    <li>Explica lo que pasa en tiempo real</li>
+                </ul>
+
+                <p><strong>Si no hay participantes:</strong></p>
+                <ul>
+                    <li>Hacer cambios tú mismo mostrando diferentes comportamientos</li>
+                    <li>"¿Qué pasará si aumento la masa? [Hacer cambio] ¡Oscila más lento!"</li>
+                    <li>"¿Y si cambio el tipo de fuerza? [Mostrar pulso] ¡Patrón diferente!"</li>
+                </ul>
+            </div>
+
+            <div class="concept-box">
+                <h4>⏱️ Cierre (30 segundos - 1 minuto)</h4>
+                <p><strong>Mensaje final poderoso:</strong></p>
+
+                <p>"Este sistema simple - un resorte y una masa - explica fenómenos en puentes, rascacielos, autos,
+                    instrumentos musicales, hasta en videojuegos. La física NO es solo teoría en libros, está en TODAS
+                    PARTES alrededor de nosotros."</p>
+
+                <p>"La próxima vez que escuchen música, conduzcan en un auto, o vean un edificio alto, recuerden: hay
+                    ingenieros que usaron estos principios para que todo funcione de forma segura."</p>
+
+                <p>"¿Preguntas? ¡Estoy aquí para responder! Y si quieren el código del simulador, tengo un código QR
+                    [señalar] para que lo descarguen y experimenten en casa."</p>
+            </div>
+
+            <h3>💬 Frases Efectivas para Diferentes Audiencias</h3>
+
+            <div class="grid-2">
+                <div class="card">
+                    <h4>👶 Para Niños (6-10 años)</h4>
+                    <p><strong>Lenguaje simple y comparaciones:</strong></p>
+                    <ul>
+                        <li>"Es como empujar a tu amigo en el columpio"</li>
+                        <li>"El resorte es como una liga gigante que empuja y jala"</li>
+                        <li>"¿Ven cómo rebota? ¡Igual que una pelota!"</li>
+                        <li>"La resonancia es como cuando cantas en la ducha y suena más fuerte"</li>
+                        <li>"Los videojuegos usan esto para hacer que el cabello se mueva de forma real"</li>
+                        <li>"¡Miren los colores cambiar cuando hay resonancia!"</li>
+                    </ul>
+
+                    <p><strong>Interacción:</strong></p>
+                    <ul>
+                        <li>"¿Quieren ver qué pasa si hago la masa más pesada?"</li>
+                        <li>"¿Creen que irá más rápido o más lento?"</li>
+                        <li>"¡Cuenten conmigo las oscilaciones!"</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h4>🎓 Para Adolescentes (11-17 años)</h4>
+                    <p><strong>Conectar con sus intereses:</strong></p>
+                    <ul>
+                        <li>"Esto es exactamente lo que usan en física de videojuegos como Fortnite"</li>
+                        <li>"La resonancia puede hacer que puentes colapsen - hay video viral del puente de Tacoma"</li>
+                        <li>"Los amortiguadores de autos deportivos usan estos principios"</li>
+                        <li>"Los skateboards tienen suspensión basada en esto"</li>
+                        <li>"Las guitarras usan resonancia para amplificar el sonido"</li>
+                        <li>"La misma ecuación se usa en circuitos eléctricos y WiFi"</li>
+                    </ul>
+
+                    <p><strong>Desafío:</strong></p>
+                    <ul>
+                        <li>"¿Pueden encontrar la configuración con mayor amplitud?"</li>
+                        <li>"Reto: hacer que el sistema oscile exactamente 1 vez por segundo"</li>
+                        <li>"Si modifican el código, pueden agregar más funciones"</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <h4>👨‍🏫 Para Adultos/Profesores</h4>
+                    <p><strong>Énfasis educativo y técnico:</strong></p>
+                    <ul>
+                        <li>"Esto demuestra ecuaciones diferenciales de segundo orden de forma visual"</li>
+                        <li>"El método numérico es Runge-Kutta de 4º orden adaptativo"</li>
+                        <li>"Aplicable a ingeniería civil, mecánica, y eléctrica"</li>
+                        <li>"Excelente herramienta para enseñar física y matemáticas universitarias"</li>
+                        <li>"El código es open-source y modificable para proyectos estudiantiles"</li>
+                        <li>"Conecta teoría abstracta con aplicaciones tangibles"</li>
+                    </ul>
+
+                    <p><strong>Valor pedagógico:</strong></p>
+                    <ul>
+                        <li>"Permite experimentación sin riesgo físico"</li>
+                        <li>"Visualización inmediata de conceptos abstractos"</li>
+                        <li>"Fomenta aprendizaje activo mediante interacción"</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h4>👔 Para Jueces de la Feria</h4>
+                    <p><strong>Destacar aspectos evaluables:</strong></p>
+                    <ul>
+                        <li>"Integra física, matemáticas aplicadas y programación"</li>
+                        <li>"Demuestra comprensión profunda de sistemas dinámicos"</li>
+                        <li>"Herramienta educativa interactiva y visual"</li>
+                        <li>"Aplicaciones en ingeniería, música, y tecnología"</li>
+                        <li>"Código bien estructurado siguiendo buenas prácticas"</li>
+                        <li>"Presenta conceptos complejos de forma accesible"</li>
+                    </ul>
+
+                    <p><strong>Originalidad:</strong></p>
+                    <ul>
+                        <li>"No solo teoría: permite experimentación en tiempo real"</li>
+                        <li>"Combina rigurosidad científica con usabilidad"</li>
+                        <li>"Potencial para uso educativo más allá de la feria"</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>🚨 Manejo de Situaciones Difíciles</h3>
+
+            <div class="warning">
+                <h4>Situación 1: Alguien pregunta algo que NO sabes</h4>
+
+                <p><strong>❌ NUNCA digas:</strong></p>
+                <ul>
+                    <li>"No sé" (sin más)</li>
+                    <li>"No me acuerdo"</li>
+                    <li>"Eso no lo estudiamos"</li>
+                    <li>"No entiendo tu pregunta"</li>
+                </ul>
+
+                <p><strong>✅ SÍ di (con confianza):</strong></p>
+                <ul>
+                    <li>"¡Excelente pregunta! No tengo la información exacta en este momento, pero puedo investigarlo y
+                        compartirlo después. ¿Me das tu email?"</li>
+                    <li>"Eso va más allá del alcance específico de esta demostración, pero es un tema fascinante que
+                        vale la pena explorar."</li>
+                    <li>"No estoy completamente seguro de los detalles técnicos específicos, pero el principio general
+                        es... [explicar lo que SÍ sabes]"</li>
+                    <li>"Interesante punto. Lo que SÍ puedo decirte es... [redirigir a lo que dominas]"</li>
+                </ul>
+
+                <p><strong>Técnica de redirección:</strong></p>
+                <p>Pregunta: "¿Cuál es la derivada parcial de la función Lagrangiana?"</p>
+                <p>Respuesta: "Esa es una pregunta de mecánica analítica avanzada. Lo que estamos demostrando aquí es el
+                    resultado práctico: cómo los sistemas oscilan. Si te interesa la formulación Lagrangiana, hay
+                    recursos excelentes en [mencionar libro/video]."</p>
+            </div>
+
+            <div class="warning">
+                <h4>Situación 2: El programa falla o se congela</h4>
+
+                <p><strong>Respuesta inmediata (mantén la calma):</strong></p>
+                <ol>
+                    <li><strong>Sonríe:</strong> "Ah, la tecnología. Incluso las simulaciones tienen sus momentos."</li>
+                    <li><strong>Humor ligero:</strong> "Parece que el sistema entró en resonancia caótica [risas]. Voy a
+                        reiniciarlo."</li>
+                    <li><strong>Llenar el tiempo:</strong> "Mientras reinicia, déjenme contarles sobre el puente de
+                        Tacoma..."</li>
+                </ol>
+
+                <p><strong>Historia de respaldo (memoriza una):</strong></p>
+                <p>"En 1940, el puente de Tacoma Narrows en Washington colapsó solo 4 meses después de inaugurarse.
+                    Vientos de 68 km/h - no excepcionalmente fuertes - crearon vórtices que oscilaban a la frecuencia
+                    natural del puente. Las oscilaciones crecieron tanto que los cables se rompieron y el puente
+                    colapsó. Hay video famoso de esto. Un perro estaba en un auto en el puente - tristemente no
+                    sobrevivió, pero esta tragedia cambió la ingeniería de puentes para siempre. Ahora TODOS los puentes
+                    se prueban exhaustivamente para evitar resonancia."</p>
+
+                <p><strong>Otras historias de respaldo:</strong></p>
+                <ul>
+                    <li>Millennium Bridge de Londres (2000)</li>
+                    <li>Taipei 101 y su amortiguador de 660 toneladas</li>
+                    <li>Cómo los instrumentos musicales usan resonancia</li>
+                </ul>
+
+                <p><strong>Si el problema persiste:</strong></p>
+                <p>"Bueno, parece que tendremos que hacerlo a la antigua. Déjenme explicarles usando estos diagramas
+                    [tener póster de respaldo] y puedo enviarles el enlace para que lo prueben en casa."</p>
+            </div>
+
+            <div class="warning">
+                <h4>Situación 3: Alguien es escéptico o crítico</h4>
+
+                <p><strong>Ejemplos de comentarios críticos:</strong></p>
+                <ul>
+                    <li>"Esto es muy simplificado, no representa la realidad"</li>
+                    <li>"En la vida real hay muchos más factores"</li>
+                    <li>"¿Por qué solo 1 dimensión?"</li>
+                    <li>"Esto no sirve para nada práctico"</li>
+                </ul>
+
+                <p><strong>Respuesta profesional (técnica del "sí, y..."):</strong></p>
+
+                <p><strong>Para "muy simplificado":</strong></p>
+                <p>"Tienes razón, este es un modelo simplificado. Y esa es precisamente su fortaleza - captura los
+                    principios fundamentales sin la complejidad que haría imposible entenderlo. Todos los modelos
+                    científicos son simplificaciones: Newton ignoró la relatividad, pero sus leyes siguen siendo útiles
+                    para la mayoría de aplicaciones. Este modelo simple explica correctamente el comportamiento de
+                    sistemas reales como amortiguadores de autos y edificios con amortiguadores de masa."</p>
+
+                <p><strong>Para "muchos más factores":</strong></p>
+                <p>"Absolutamente correcto. En sistemas reales también hay que considerar no-linealidades, múltiples
+                    grados de libertad, efectos térmicos, y muchos otros. Pero aquí está lo interesante: este modelo
+                    simple predice correctamente la frecuencia de resonancia y el efecto del amortiguamiento, que son
+                    los factores más importantes en diseño de ingeniería. Es el primer paso - después se agregan
+                    refinamientos."</p>
+
+                <p><strong>Para "solo 1 dimensión":</strong></p>
+                <p>"Excelente observación - eres perspicaz. Este es un sistema de 1 grado de libertad, sí. Lo elegí
+                    porque permite visualizar claramente los conceptos. Los sistemas reales tienen múltiples grados de
+                    libertad - un puente puede flexionar verticalmente, lateralmente, y torsionalmente. Pero cada modo
+                    se puede analizar como un sistema masa-resorte independiente, así que este es el bloque constructivo
+                    fundamental."</p>
+
+                <p><strong>Para "no sirve para nada":</strong></p>
+                <p>"Entiendo el escepticismo. Déjame mostrarte aplicaciones concretas: [mostrar ejemplos del Taipei 101,
+                    amortiguadores de auto, instrumentos musicales]. Ingenieros reales usan exactamente estos principios
+                    - solo que con matemáticas más complejas. Este es el fundamento. De hecho, si estudias ingeniería
+                    mecánica o civil, verás estas ecuaciones en tu primer año de universidad."</p>
+
+                <p><strong>Regla de oro:</strong> Nunca te pongas defensivo. Reconoce el punto válido, luego explica por
+                    qué tu enfoque es apropiado.</p>
+            </div>
+
+            <div class="warning">
+                <h4>Situación 4: Niño pequeño toca todo sin control</h4>
+
+                <p><strong>Respuesta amable pero firme:</strong></p>
+                <p>"¡Veo que te gusta mucho! [Sonreír] Voy a mostrarte algo específico, y después puedes intentarlo tú
+                    con ayuda, ¿te parece? Primero mira esto..."</p>
+
+                <p><strong>Involucrar al padre/madre:</strong></p>
+                <p>"¿Le gustaría ayudar a su hijo a explorar el simulador? Puedo guiarlos juntos."</p>
+
+                <p><strong>Si continúa:</strong></p>
+                <p>"[Al padre] ¿Podrían esperar un momentito mientras termino de explicar? Enseguida será su turno."
+                    [Sonrisa amable pero clara]</p>
+            </div>
+
+            <div class="warning">
+                <h4>Situación 5: Nadie se detiene en tu stand</h4>
+
+                <p><strong>Técnicas de atracción activa:</strong></p>
+
+                <ol>
+                    <li><strong>Demo en loop:</strong> Ten el experimento de Resonancia corriendo constantemente - el
+                        movimiento dramático atrae miradas</li>
+
+                    <li><strong>Voz proyectada (no grites):</strong>
+                        <ul>
+                            <li>"¡Vengan a ver cómo un puente puede colapsar con vientos suaves!"</li>
+                            <li>"¿Quién quiere ver resonancia en acción?"</li>
+                            <li>"¡Demostración de física interactiva - pueden controlarlo ustedes!"</li>
+                        </ul>
+                    </li>
+
+                    <li><strong>Contacto visual y sonrisa:</strong> Cuando alguien mire, sonríe y di: "¿Te gustaría ver
+                        algo increíble de física?"</li>
+
+                    <li><strong>Cartel llamativo:</strong>
+                        <ul>
+                            <li>"¿POR QUÉ COLAPSÓ EL PUENTE? ¡DESCÚBRELO AQUÍ!"</li>
+                            <li>"CONTROLA LA RESONANCIA - ¡PRUÉBALO TÚ!"</li>
+                            <li>"DE PUENTES A VIDEOJUEGOS - LA FÍSICA ESTÁ EN TODAS PARTES"</li>
+                        </ul>
+                    </li>
+
+                    <li><strong>Ofrecer algo:</strong> "¿Quieren un sticker/tarjeta con el código QR para descargar el
+                        simulador?"</li>
+                </ol>
+
+                <p><strong>Timing:</strong> En ferias, hay flujos de tráfico. Los mejores momentos son:</p>
+                <ul>
+                    <li>Justo después de que termina otra presentación</li>
+                    <li>Cuando pasan grupos escolares</li>
+                    <li>Durante las horas de almuerzo (padres con niños)</li>
+                </ul>
+            </div>
+
+            <h3>🎨 Mejoras al Stand (Presentación Visual)</h3>
+
+            <div class="tip">
+                <h4>Elementos Visuales Esenciales:</h4>
+
+                <p><strong>1. Póster Principal (Grande, llamativo)</strong></p>
+                <ul>
+                    <li>📐 Tamaño: Mínimo 60x90 cm</li>
+                    <li>🎨 Colores: Alto contraste, letras grandes</li>
+                    <li>📋 Contenido:
+                        <ul>
+                            <li>Título grande: "SISTEMA MASA-RESORTE INTERACTIVO"</li>
+                            <li>Ecuación principal destacada: m·y'' + c·y' + k·y = F(t)</li>
+                            <li>3-4 imágenes: puente Tacoma, edificio con amortiguador, guitarra, auto</li>
+                            <li>Diagrama simple del sistema</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <p><strong>2. Fotos Impactantes</strong></p>
+                <ul>
+                    <li>🌉 Puente de Tacoma colapsando (impresiona mucho)</li>
+                    <li>🏢 Amortiguador de Taipei 101 (la esfera gigante)</li>
+                    <li>🚗 Esquema de suspensión de auto</li>
+                    <li>🎸 Interior de una guitarra mostrando caja de resonancia</li>
+                </ul>
+
+                <p><strong>3. Objetos Físicos (Muy importante - tangibilidad)</strong></p>
+                <ul>
+                    <li>🔵 Resorte real (Slinky funciona perfecto)</li>
+                    <li>⚖️ Diferentes masas para colgar del resorte</li>
+                    <li>🎸 Guitarra de juguete o diapasón</li>
+                    <li>🔧 Amortiguador de bicicleta (si consigues uno usado)</li>
+                    <li>🥤 Copa de cristal (para demo de resonancia acústica)</li>
+                </ul>
+
+                <p><strong>4. Tecnología</strong></p>
+                <ul>
+                    <li>💻 Laptop con simulador corriendo</li>
+                    <li>🖱️ Mouse externo (más fácil para el público)</li>
+                    <li>📱 Tablet con esta guía abierta</li>
+                    <li>🔌 Extensión eléctrica y regleta</li>
+                </ul>
+
+                <p><strong>5. Material de Distribución</strong></p>
+                <ul>
+                    <li>📱 Código QR grande impreso (para descargar código)</li>
+                    <li>📄 Tarjetas con datos curiosos
+                        <ul>
+                            <li>"¿Sabías que el Taipei 101 tiene un amortiguador de 660 toneladas?"</li>
+                            <li>"El puente de Tacoma colapsó en 1940 por resonancia"</li>
+                            <li>"Tu auto tiene 4 sistemas masa-resorte (uno por rueda)"</li>
+                        </ul>
+                    </li>
+                    <li>🎁 Stickers (si el presupuesto permite)</li>
+                </ul>
+
+                <p><strong>6. Infografía Educativa</strong></p>
+                <p>Crear cartel con "5 LUGARES DONDE ENCUENTRAS SISTEMAS MASA-RESORTE":</p>
+                <ol>
+                    <li>🚗 Suspensión de vehículos</li>
+                    <li>🏢 Edificios altos (amortiguadores)</li>
+                    <li>🎸 Instrumentos musicales</li>
+                    <li>🎮 Física de videojuegos</li>
+                    <li>📱 Vibración de celulares</li>
+                </ol>
+            </div>
+
+            <div class="tip">
+                <h4>Layout Sugerido del Stand:</h4>
+
+                <div class="code-display">
+                    ┌────────────────────────────────────────┐
+                    │ PÓSTER PRINCIPAL (Pared trasera) │
+                    ├────────────────────────────────────────┤
+                    │ │
+                    │ [Laptop] [Objetos físicos] │
+                    │ simulador resortes, masas │
+                    │ │
+                    │ [Infografía] [Fotos Tacoma/Taipei] │
+                    │ │
+                    │ [Tarjetas] [Código QR grande] │
+                    │ para para descarga │
+                    │ llevar │
+                    └────────────────────────────────────────┘
+                    │ │
+                    [Silla] [Silla]
+                    (para ti) (para visitante)</div>
+
+                <p><strong>Consejos de disposición:</strong></p>
+                <ul>
+                    <li>✅ Laptop a altura media (fácil de ver)</li>
+                    <li>✅ Espacio para que 2-3 personas se paren frente al stand</li>
+                    <li>✅ Material para llevar al frente (fácil acceso)</li>
+                    <li>✅ Objetos físicos a un lado (pueden tomarlos)</li>
+                    <li>✅ Tu silla ligeramente al lado (no bloquees vista)</li>
+                </ul>
+            </div>
+
+            <h3>⭐ Ideas para Destacar ante Jueces</h3>
+
+            <div class="important">
+                <h4>Rúbrica típica de evaluación en ferias científicas:</h4>
+
+                <table>
+                    <tr>
+                        <th>Criterio</th>
+                        <th>Cómo destacar</th>
+                        <th>Qué evitar</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Comprensión científica</strong></td>
+                        <td>
+                            • Explicar ecuaciones con confianza<br>
+                            • Responder preguntas técnicas<br>
+                            • Mencionar limitaciones del modelo
+                        </td>
+                        <td>
+                            • Memorizar sin entender<br>
+                            • Ignorar preguntas difíciles<br>
+                            • Presentar como "perfecto"
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Método científico</strong></td>
+                        <td>
+                            • Explicar por qué elegiste este proyecto<br>
+                            • Mostrar proceso: idea → código → pruebas<br>
+                            • Mencionar iteraciones y mejoras
+                        </td>
+                        <td>
+                            • Solo mostrar resultado final<br>
+                            • No explicar decisiones<br>
+                            • Parecer que lo copiaste
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Creatividad</strong></td>
+                        <td>
+                            • Enfatizar interactividad<br>
+                            • Mostrar aplicaciones únicas<br>
+                            • Demostrar extensibilidad
+                        </td>
+                        <td>
+                            • Presentar como "solo un simulador más"<br>
+                            • No mencionar aplicaciones<br>
+                            • Ser genérico
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Presentación</strong></td>
+                        <td>
+                            • Hablar con entusiasmo<br>
+                            • Usar analogías claras<br>
+                            • Hacer contacto visual
+                        </td>
+                        <td>
+                            • Leer de un papel<br>
+                            • Hablar monótono<br>
+                            • Mirar solo la pantalla
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Aplicabilidad</strong></td>
+                        <td>
+                            • Dar ejemplos concretos (puentes, autos)<br>
+                            • Mencionar valor educativo<br>
+                            • Mostrar código abierto
+                        </td>
+                        <td>
+                            • Quedarse solo en teoría<br>
+                            • No mencionar utilidad<br>
+                            • Ignorar impacto educativo
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="important">
+                <h4>🎯 "Elevator Pitch" para Jueces (30 segundos)</h4>
+
+                <p><strong>Si un juez pregunta "¿De qué trata tu proyecto?":</strong></p>
+
+                <p>"Creé un simulador interactivo de sistemas masa-resorte que permite visualizar y experimentar con
+                    resonancia y amortiguamiento en tiempo real. El proyecto integra física (ecuaciones diferenciales),
+                    programación (Python con métodos numéricos), y diseño de interfaz. Lo que lo hace único es que
+                    cualquiera - desde niños hasta ingenieros - puede entender conceptos complejos manipulando
+                    parámetros y viendo resultados inmediatos. Tiene aplicaciones desde diseño de puentes hasta
+                    videojuegos, y el código es open-source para uso educativo."</p>
+
+                <p><strong>Puntos clave en 30 segundos:</strong></p>
+                <ol>
+                    <li>✅ Qué es (simulador interactivo)</li>
+                    <li>✅ Qué hace (visualizar resonancia)</li>
+                    <li>✅ Cómo lo hace (Python, métodos numéricos)</li>
+                    <li>✅ Por qué importa (educativo, aplicable)</li>
+                    <li>✅ Qué lo hace especial (interactivo, accesible)</li>
+                </ol>
+            </div>
+
+            <div class="important">
+                <h4>💡 Respuestas preparadas para preguntas típicas de jueces:</h4>
+
+                <p><strong>P: "¿Por qué elegiste este proyecto?"</strong></p>
+                <p>R: "Me fascinó descubrir que el colapso del puente de Tacoma fue causado por un fenómeno físico que
+                    se puede modelar con ecuaciones relativamente simples. Quise crear una herramienta donde otros
+                    pudieran experimentar con estos conceptos de forma visual e interactiva, porque la física se
+                    entiende mejor cuando se experimenta, no solo cuando se lee."</p>
+
+                <p><strong>P: "¿Qué fue lo más difícil?"</strong></p>
+                <p>R: "Balancear precisión científica con usabilidad. Podría haber agregado muchísimas complejidades -
+                    sistemas no lineales, múltiples grados de libertad - pero eso haría el simulador difícil de usar y
+                    entender. Decidí enfocarme en capturar los fenómenos esenciales (resonancia y amortiguamiento) de
+                    forma clara y accesible."</p>
+
+                <p><strong>P: "¿Qué aprendiste?"</strong></p>
+                <p>R: "Tres cosas principales: 1) Métodos numéricos para resolver ecuaciones diferenciales -
+                    específicamente Runge-Kutta. 2) Diseño de interfaces que hagan conceptos abstractos tangibles. 3) La
+                    omnipresencia de estos sistemas - están literalmente en todas partes, desde mi auto hasta los
+                    videojuegos que juego."</p>
+
+                <p><strong>P: "¿Cómo validaste tu modelo?"</strong></p>
+                <p>R: "Comparé resultados con soluciones analíticas conocidas para casos simples. Por ejemplo, sin
+                    amortiguamiento y sin fuerza externa, la frecuencia calculada debe ser exactamente √(k/m), y lo es.
+                    También verifiqué que en resonancia (cuando ω_externa = ω_natural) la amplitud crece dramáticamente,
+                    como predice la teoría."</p>
+
+                <p><strong>P: "¿Qué harías diferente o próximos pasos?"</strong></p>
+                <p>R: "Me gustaría agregar: 1) Visualización del espacio de fases para mostrar trayectorias en el plano
+                    posición-velocidad. 2) Análisis de Fourier en tiempo real para mostrar componentes de frecuencia. 3)
+                    Un sistema de dos masas acopladas para demostrar modos normales de oscilación. También
