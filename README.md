@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 [![Status](https://img.shields.io/badge/Status-Active-brightgreen)](https://github.com/tu-usuario/mass-spring-simulator)
 
-Un simulador educativo interactivo para visualizar y experimentar con sistemas masa-resorte, resonancia y amortiguamiento. Desarrollado para ferias científicas y educación en física.
+Un simulador educativo interactivo para explorar conceptos de física como resonancia, amortiguamiento y oscilaciones.
 
 ![Demo del Simulador](docs/demo.gif)
 
@@ -15,6 +15,7 @@ Un simulador educativo interactivo para visualizar y experimentar con sistemas m
 - **Animación fluida** del sistema masa-resorte
 - **Gráficas dinámicas** de posición vs tiempo
 - **Detección automática** de resonancia con cambios de color
+- **Sistema de consejos educativos**
 
 ### 🔬 Parámetros Ajustables
 - **Masa (m)**: 0.1 - 5.0 kg
@@ -45,18 +46,18 @@ Un simulador educativo interactivo para visualizar y experimentar con sistemas m
 
 1. **Clonar el repositorio**:
 ```bash
-git clone https://github.com/tu-usuario/mass-spring-simulator.git
-cd mass-spring-simulator
+git clone https://github.com/carlop10/sistema-masa-resorte-interactivo.git
+cd sistema-masa-resorte-interactivo
 ```
 
 2. **Instalar dependencias**:
 ```bash
-pip install numpy scipy matplotlib
+pip install -r requirements.txt
 ```
 
 3. **Ejecutar el simulador**:
 ```bash
-python mass_spring_simulator.py
+python main.py
 ```
 
 ### 📦 Instalación con Entorno Virtual (Recomendado)
@@ -141,16 +142,17 @@ La **resonancia** ocurre cuando:
 
 ### 📁 Estructura del Proyecto
 ```
-mass-spring-simulator/
-├── mass_spring_simulator.py  # Código principal
-├── requirements.txt          # Dependencias
-├── README.md                # Este archivo
-├── docs/                    # Documentación
-│   ├── guia_completa.html   # Guía detallada
-│   ├── demo.gif            # GIF demostrativo
-│   └── images/             # Imágenes para documentación
-└── examples/               # Ejemplos adicionales
-    └── advanced_modes.py   # Modos de oscilación avanzados
+sistema-masa-resorte-interactivo/
+├── main.py                 # Punto de entrada
+├── requirements.txt        # Dependencias
+├── src/                   # Código fuente
+│   ├── config.py          # Configuraciones
+│   ├── physics_engine.py  # Motor físico
+│   ├── animation_manager.py # Gestor de animaciones
+│   ├── ui_components.py   # Componentes de UI
+│   ├── welcome_screen.py  # Pantalla de bienvenida
+│   └── mass_spring_app.py # Aplicación principal
+└── README.md
 ```
 
 ### 🔧 Componentes Principales
@@ -170,39 +172,6 @@ mass-spring-simulator/
 - **Método RK45** para resolver ecuaciones diferenciales
 - **Interpolación suave** para animaciones
 - **Detección de resonancia** en tiempo real
-
-## 🎨 Personalización y Extensión
-
-### 🔧 Modificar Parámetros
-Puedes ajustar los rangos de los parámetros editando las líneas:
-```python
-# En mass_spring_simulator.py, buscar:
-self.mass_slider = Slider(..., valmin=0.1, valmax=5.0)
-self.k_slider = Slider(..., valmin=0.5, valmax=15.0)
-# etc...
-```
-
-### 🎯 Añadir Nuevos Experimentos
-Agrega nuevos experimentos predefinidos en el diccionario:
-```python
-self.experiments = {
-    "Normal": {"m": 1.0, "k": 4.0, "c": 0.1, "F0": 2.0, "omega": 2.0},
-    "Tu Experimento": {"m": 2.0, "k": 8.0, "c": 0.5, "F0": 1.0, "omega": 1.0},
-    # Añadir más aquí...
-}
-```
-
-### 🌊 Crear Nuevos Tipos de Fuerza
-Extiende la función `external_force`:
-```python
-def external_force(self, t):
-    # ... código existente ...
-    elif actual_type == "triangular":
-        # Implementar fuerza triangular
-        period = 2 * np.pi / self.omega
-        phase = (t % period) / period
-        return self.F0 * (2 * abs(phase - 0.5) - 0.5)
-```
 
 ## 📊 Aplicaciones en el Mundo Real
 
@@ -226,39 +195,11 @@ def external_force(self, t):
 - **Filtros**: Selección de frecuencias
 - **Comunicaciones**: Sintonización de antenas
 
-## 🐛 Solución de Problemas
 
-### ❌ Error: "ModuleNotFoundError: No module named 'numpy'"
-**Solución**: Instalar las dependencias:
-```bash
-pip install numpy scipy matplotlib
-```
+## 🔍 Guía
 
-### ❌ Error: La animación se ve entrecortada
-**Solución**: 
-- Reducir la frecuencia externa (ω < 4 rad/s)
-- Cerrar otras aplicaciones que consuman recursos
-- Usar una computadora con mejor rendimiento gráfico
+- **📚 Mas sobre la app**: [Guía Completa](https://github.com/carlop10/sistema-masa-resorte-interactivo/blob/main/guia.html)
 
-### ❌ Error: Tkinter no está disponible
-**Solución** (Linux):
-```bash
-sudo apt-get install python3-tk
-```
+## 🤖 Créditos
 
-**Solución** (Mac):
-```bash
-brew install python-tk
-```
-
-### ❌ El programa se cierra inesperadamente
-**Solución**:
-- Verificar que todos los parámetros estén dentro de los rangos válidos
-- Reiniciar el programa
-- Ejecutar desde terminal para ver mensajes de error
-
-
-## 📞 Contacto y Soporte
-
-- **🐙 GitHub**: [https://github.com/carlop10](https://github.com/carlop10)
-- **📚 Documentación**: [Guía Completa](https://github.com/carlop10/sistema-masa-resorte-interactivo/blob/main/guia.pdf)
+- ** Esta aplicación se desarrolló mayormente con DeepSeek
